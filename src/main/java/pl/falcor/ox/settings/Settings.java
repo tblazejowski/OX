@@ -4,6 +4,7 @@ import java.util.Locale;
 
 public class Settings {
 
+    public static final int NUMBER_OF_PLAYERS = 2;
     private final Locale gameLocale;
 
     public Settings() {
