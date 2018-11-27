@@ -15,7 +15,7 @@ public class ConsolePrinterTest {
         System.setOut(new PrintStream(outputStream));
         ConsolePrinter consolePrinter = new ConsolePrinter();
 
-        consolePrinter.print("any text message");
+        consolePrinter.println("any text message");
 
         assertEquals(outputStream.toString(), "any text message\n");
     }

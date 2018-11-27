@@ -13,7 +13,7 @@ public class SettingsValidator {
         if (chosenOption == 1) return new Locale("en", "US");
         if (chosenOption == 2) return new Locale("pl", "PL");
         else {
-            consolePrinter.print("Please chose option number from the list\n");
+            consolePrinter.println("Please chose option number from the list");
             return validateLanguageOption(consoleReader, consolePrinter);
         }
     }

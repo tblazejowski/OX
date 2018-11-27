@@ -3,8 +3,6 @@ package pl.falcor.ox.settings;
 import org.testng.annotations.Test;
 
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 
 import static org.testng.Assert.assertEquals;
 

@@ -13,9 +13,9 @@ public class SettingsReader {
 
     public Locale setLanguage() {
 
-        consolePrinter.print("Chose language/Wybierz język\n" +
+        consolePrinter.println("Chose language/Wybierz język\n" +
                 "[1] English\n" +
-                "[2] Polski\n");
+                "[2] Polski");
 
         return settingsValidator.validateLanguageOption(consoleReader, consolePrinter);
     }
