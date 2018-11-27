@@ -15,7 +15,7 @@ public class ConsoleReaderTest {
     public void shouldReturnTheSameNumberWhenNumberIsProvidedInInput() {
         ByteArrayInputStream inputStream = new ByteArrayInputStream("2\n".getBytes());
         System.setIn(inputStream);
-        ConsoleReader consoleReader = new ConsoleReader(new Scanner(System.in));
+        ConsoleReader consoleReader = new ConsoleReader();
 
         assertEquals(consoleReader.readNumber(), 2);
     }
@@ -24,7 +24,7 @@ public class ConsoleReaderTest {
     public void shouldReturnTheSameTextWhenTextIsProvidedInInput() {
         ByteArrayInputStream inputStream = new ByteArrayInputStream("any text input\n".getBytes());
         System.setIn(inputStream);
-        ConsoleReader consoleReader = new ConsoleReader(new Scanner(System.in));
+        ConsoleReader consoleReader = new ConsoleReader();
 
         assertEquals(consoleReader.readLine(), "any text input");
     }
@@ -35,7 +35,7 @@ public class ConsoleReaderTest {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setIn(inputStream);
         System.setOut(new PrintStream(outputStream));
-        ConsoleReader consoleReader = new ConsoleReader(new Scanner(System.in));
+        ConsoleReader consoleReader = new ConsoleReader();
 
         consoleReader.readNumber();
 

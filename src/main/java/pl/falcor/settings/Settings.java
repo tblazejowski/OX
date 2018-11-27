@@ -8,7 +8,12 @@ public class Settings {
 
     public Settings() {
         gameLocale = new Locale("en", "US");
-        Locale.setDefault(gameLocale);
+        Locale.setDefault(this.gameLocale);
+    }
+
+    public Settings(Locale gameLocale) {
+        this.gameLocale = gameLocale;
+        Locale.setDefault(this.gameLocale);
     }
 
     public Locale getGameLocale() {

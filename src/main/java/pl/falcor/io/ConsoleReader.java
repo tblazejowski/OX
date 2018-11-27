@@ -7,8 +7,8 @@ public class ConsoleReader implements GameReader {
 
     private final Scanner scanner;
 
-    public ConsoleReader(Scanner scanner) {
-        this.scanner = scanner;
+    public ConsoleReader() {
+        this.scanner = new Scanner(System.in);
     }
 
     public int readNumber() {
