@@ -5,12 +5,26 @@ import java.util.Scanner;
 
 public class ConsoleReader implements GameReader {
 
-    @Override
-    public int readNumber(Scanner scanner) {
+    public int readNumber() {
+
+        Scanner scanner = new Scanner(System.in);
+
         try {
             return scanner.nextInt();
         } catch (InputMismatchException inputMismatchException) {
-            return readNumber(scanner);
+            scanner.nextLine();
+            return readNumber();
+        }
+    }
+
+    public String readLine() {
+
+        Scanner scanner = new Scanner(System.in);
+
+        try {
+            return scanner.nextLine();
+        } catch (InputMismatchException inputMismatchException) {
+            return readLine();
         }
     }
 }
