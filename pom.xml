@@ -73,7 +73,7 @@
                         <index>true</index>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>pl.falcor.App</mainClass>
+                            <mainClass>pl.falcor.ox.App</mainClass>
                         </manifest>
                         <manifestEntries>
                             <mode>development</mode>

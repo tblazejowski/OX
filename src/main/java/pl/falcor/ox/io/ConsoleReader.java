@@ -1,4 +1,4 @@
-package pl.falcor.io;
+package pl.falcor.ox.io;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

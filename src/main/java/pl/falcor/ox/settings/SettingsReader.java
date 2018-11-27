@@ -1,7 +1,7 @@
-package pl.falcor.settings;
+package pl.falcor.ox.settings;
 
-import pl.falcor.io.ConsolePrinter;
-import pl.falcor.io.ConsoleReader;
+import pl.falcor.ox.io.ConsolePrinter;
+import pl.falcor.ox.io.ConsoleReader;
 
 import java.util.Locale;
 

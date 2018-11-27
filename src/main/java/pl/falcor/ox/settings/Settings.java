@@ -1,4 +1,4 @@
-package pl.falcor.settings;
+package pl.falcor.ox.settings;
 
 import java.util.Locale;
 
