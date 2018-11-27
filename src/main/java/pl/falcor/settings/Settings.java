@@ -4,14 +4,14 @@ import java.util.Locale;
 
 public class Settings {
 
-    private final Locale aLocale;
+    private final Locale gameLocale;
 
     public Settings() {
-        aLocale = new Locale("en", "US");
-        Locale.setDefault(aLocale);
+        gameLocale = new Locale("en", "US");
+        Locale.setDefault(gameLocale);
     }
 
-    public Locale getaLocale() {
-        return aLocale;
+    public Locale getGameLocale() {
+        return gameLocale;
     }
 }

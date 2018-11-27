@@ -11,7 +11,7 @@ public class SettingsTest {
 
         Settings settings = new Settings();
 
-        String language = settings.getaLocale().getDisplayLanguage();
+        String language = settings.getGameLocale().getDisplayLanguage();
 
         assertEquals(language, "English");
     }
