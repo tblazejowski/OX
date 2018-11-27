@@ -34,19 +34,4 @@ public class SettingsReaderTest {
 
         assertEquals(language, "polski");
     }
-
-    public void shouldReturnRespectiveMessageWhileOptionBeyondListFirstChosenByUSer(){
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        ByteArrayInputStream inputStream = new ByteArrayInputStream("0\n2\n".getBytes());
-        System.setOut(new PrintStream(outputStream));
-        System.setIn(inputStream);
-        SettingsReader settingsReader = new SettingsReader();
-        Settings settings = new Settings(settingsReader.setLanguage());
-
-        String language = settings.getGameLocale().getDisplayLanguage();
-        String[] result = outputStream.toString().split("\n");
-
-        assertEquals(language, "polski");
-        assertEquals(result[result.length - 5], "Chose option number from the list");
-    }
 }
