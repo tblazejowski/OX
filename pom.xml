@@ -8,7 +8,7 @@
     <artifactId>OX</artifactId>
     <version>0.1</version>
     <name>project_ox</name>
-    <description>Here description should be placed</description>
+    <description>noughts and crosses game in console</description>
     <url>falcor.pl</url>
   
     <properties>
@@ -28,10 +28,17 @@
         <version.plugin.maven.jar>3.1.0</version.plugin.maven.jar>
         <version.plugin.maven.compiler>3.8.0</version.plugin.maven.compiler>
         <version.plugin.maven.resources>3.1.0</version.plugin.maven.resources>
+        <version.dependency.testng>6.10</version.dependency.testng>
     </properties>
 
     <dependencies>
         <!-- #Your dependencies -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${version.dependency.testng}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
