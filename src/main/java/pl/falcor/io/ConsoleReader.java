@@ -5,21 +5,24 @@ import java.util.Scanner;
 
 public class ConsoleReader implements GameReader {
 
-    public int readNumber() {
+    private final Scanner scanner;
 
-        Scanner scanner = new Scanner(System.in);
+    public ConsoleReader(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
+    public int readNumber() {
 
         try {
             return scanner.nextInt();
         } catch (InputMismatchException inputMismatchException) {
+            System.out.println("Please provide a number.");
             scanner.nextLine();
             return readNumber();
         }
     }
 
     public String readLine() {
-
-        Scanner scanner = new Scanner(System.in);
 
         try {
             return scanner.nextLine();
