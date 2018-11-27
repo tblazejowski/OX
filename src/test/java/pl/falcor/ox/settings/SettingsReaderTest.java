@@ -1,6 +1,8 @@
 package pl.falcor.ox.settings;
 
 import org.testng.annotations.Test;
+import pl.falcor.ox.domain.Player;
+import pl.falcor.ox.domain.Sign;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -76,16 +78,16 @@ public class SettingsReaderTest {
         assertEquals(playerNames[1], "Sara");
     }
 
-    public void shouldReturnIndexFromPlayerNamesArrayWhoChosenToStartFirst() {
+    public void shouldReturnArrayOfPlayerNamesWithFirstNameChosenToStartGame() {
 
         ByteArrayInputStream inputStream = new ByteArrayInputStream("2\n".getBytes());
         System.setIn(inputStream);
         SettingsReader settingsReader = new SettingsReader();
         String[] playerNames = new String[]{"Johnny", "Sara"};
 
-        int startsFirst = settingsReader.requestWhoStarts(playerNames);
+        settingsReader.requestWhoStarts(playerNames);
 
-        assertEquals(startsFirst, 1);
+        assertEquals(playerNames[0], "Sara");
     }
 
     public void shouldReturnLastOptionIndicatedByUserAsPreviousBeyondSet() {
@@ -97,5 +99,17 @@ public class SettingsReaderTest {
         int chosenOption = settingsReader.validateOptionChosen(2);
 
         assertEquals(chosenOption, 2);
+    }
+
+    public void shouldReturnPlayersArrayWithFirstPlayerHavingIndicatedSignSet() {
+
+        ByteArrayInputStream inputStream = new ByteArrayInputStream("2\n".getBytes());
+        System.setIn(inputStream);
+        SettingsReader settingsReader = new SettingsReader();
+        String[] playerNames = new String[]{"Johnny", "Sara"};
+
+        Player[] players = settingsReader.requestStartingSign(playerNames);
+
+        assertEquals(players[0].getSign(), Sign.O);
     }
 }

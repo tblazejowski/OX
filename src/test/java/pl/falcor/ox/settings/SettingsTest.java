@@ -2,6 +2,7 @@ package pl.falcor.ox.settings;
 
 import org.testng.annotations.Test;
 import pl.falcor.ox.domain.Player;
+import pl.falcor.ox.domain.Sign;
 
 import java.util.Locale;
 
@@ -22,7 +23,7 @@ public class SettingsTest {
     public void shouldReturnSetOptionsForTheGameSettings() {
 
         Locale setLocale = new Locale("pl", "PL");
-        Player[] players = new Player[]{new Player("Staś"), new Player("Nel")};
+        Player[] players = new Player[]{new Player("Staś", Sign.X), new Player("Nel", Sign.O)};
 
         Settings settings = new Settings(setLocale, players);
 

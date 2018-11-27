@@ -1,11 +1,15 @@
 package pl.falcor.ox.settings;
 
+import pl.falcor.ox.domain.Player;
+import pl.falcor.ox.domain.Sign;
+import pl.falcor.ox.domain.Toogle;
 import pl.falcor.ox.io.ConsolePrinter;
 import pl.falcor.ox.io.ConsoleReader;
 
+import java.util.EnumSet;
 import java.util.Locale;
 
-public class SettingsReader {
+public class SettingsReader implements Toogle {
 
     private ConsolePrinter consolePrinter;
     private ConsoleReader consoleReader;
@@ -39,13 +43,29 @@ public class SettingsReader {
         return playerNames;
     }
 
-    public int requestWhoStarts(String[] playerNames) {
+    public String[] requestWhoStarts(String[] playerNames) {
 
         consolePrinter.println("Please indicate who starts:");
         for (int i = 0; i < Settings.NUMBER_OF_PLAYERS; i++) {
             consolePrinter.println("[" + (i + 1) + "] " + playerNames[i]);
         }
-        return validateOptionChosen(Settings.NUMBER_OF_PLAYERS) - 1;
+        if (validateOptionChosen(Settings.NUMBER_OF_PLAYERS) - 1 == 0) return playerNames;
+        else {
+            swapObjectsInArray(playerNames);
+            return playerNames;
+        }
+    }
+
+    public Player[] requestStartingSign(String[] playerNames) {
+
+        Player[] players = new Player[Settings.NUMBER_OF_PLAYERS];
+        consolePrinter.println(playerNames[0] + " please chose your sign:");
+        EnumSet.allOf(Sign.class).forEach(sign -> consolePrinter.println("[" + (sign.ordinal() + 1) + "] " + sign.toString()));
+        int signChosen = validateOptionChosen(Sign.values().length) - 1;
+        players[0] = new Player(playerNames[0], Sign.values()[signChosen]);
+        if (signChosen == 0) players[1] = new Player(playerNames[1], Sign.values()[1]);
+        else players[1] = new Player(playerNames[1], Sign.values()[0]);
+        return players;
     }
 
     public int validateOptionChosen(int availableOptions) {
