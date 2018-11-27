@@ -30,13 +30,15 @@ public class SettingsReader {
         }
     }
 
-    public Player[] setPlayerNames(int numberOfPlayers) {
+    public String[] setPlayerNames(int numberOfPlayers) {
 
-        Player[] players = new Player[numberOfPlayers];
+        String[] playerNames = new String[numberOfPlayers];
         for (int i = 0; i < Settings.NUMBER_OF_PLAYERS; i++) {
             consolePrinter.println("Please provide player" + (i + 1) + " name: ");
-            players[i] = new Player(consoleReader.readLine());
+            playerNames[i] = (consoleReader.readLine());
         }
-        return players;
+        return playerNames;
     }
+
+
 }

@@ -71,9 +71,9 @@ public class SettingsReaderTest {
         System.setIn(inputStream);
         SettingsReader settingsReader = new SettingsReader();
 
-        Player[] players = settingsReader.setPlayerNames(Settings.NUMBER_OF_PLAYERS);
+        String[] playerNames = settingsReader.setPlayerNames(Settings.NUMBER_OF_PLAYERS);
 
-        assertEquals(players[0].getName(), "Johnny");
-        assertEquals(players[1].getName(), "Sara");
+        assertEquals(playerNames[0], "Johnny");
+        assertEquals(playerNames[1], "Sara");
     }
 }
