@@ -1,6 +1,5 @@
 package pl.falcor.ox.settings;
 
-import pl.falcor.ox.domain.Player;
 import pl.falcor.ox.io.ConsolePrinter;
 import pl.falcor.ox.io.ConsoleReader;
 
@@ -30,9 +29,9 @@ public class SettingsReader {
         }
     }
 
-    public String[] setPlayerNames(int numberOfPlayers) {
+    public String[] setPlayerNames() {
 
-        String[] playerNames = new String[numberOfPlayers];
+        String[] playerNames = new String[Settings.NUMBER_OF_PLAYERS];
         for (int i = 0; i < Settings.NUMBER_OF_PLAYERS; i++) {
             consolePrinter.println("Please provide player" + (i + 1) + " name: ");
             playerNames[i] = (consoleReader.readLine());
@@ -40,5 +39,19 @@ public class SettingsReader {
         return playerNames;
     }
 
+    public int requestWhoStarts(String[] playerNames) {
 
+        consolePrinter.println("Please indicate who starts:");
+        for (int i = 0; i < Settings.NUMBER_OF_PLAYERS; i++) {
+            consolePrinter.println("[" + (i + 1) + "] " + playerNames[i]);
+        }
+        return validateOptionChosen(Settings.NUMBER_OF_PLAYERS) - 1;
+    }
+
+    public int validateOptionChosen(int availableOptions) {
+        int chosenOption = consoleReader.readNumber();
+        if (chosenOption > 0 && chosenOption <= availableOptions)
+            return chosenOption;
+        else return validateOptionChosen(availableOptions);
+    }
 }

@@ -1,7 +1,6 @@
 package pl.falcor.ox.settings;
 
 import org.testng.annotations.Test;
-import pl.falcor.ox.domain.Player;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -13,7 +12,7 @@ import static org.testng.Assert.assertEquals;
 @Test
 public class SettingsReaderTest {
 
-    public void shouldReturnEnglishLanguageSettingOfTheGameAsChosenByUser(){
+    public void shouldReturnEnglishLanguageSettingOfTheGameAsChosenByUser() {
 
         ByteArrayInputStream inputStream = new ByteArrayInputStream("1\n".getBytes());
         System.setIn(inputStream);
@@ -25,7 +24,7 @@ public class SettingsReaderTest {
         assertEquals(language, "English");
     }
 
-    public void shouldReturnPolishLanguageSettingOfTheGameAsChosenByUser(){
+    public void shouldReturnPolishLanguageSettingOfTheGameAsChosenByUser() {
 
         ByteArrayInputStream inputStream = new ByteArrayInputStream("2\n".getBytes());
         System.setIn(inputStream);
@@ -71,9 +70,32 @@ public class SettingsReaderTest {
         System.setIn(inputStream);
         SettingsReader settingsReader = new SettingsReader();
 
-        String[] playerNames = settingsReader.setPlayerNames(Settings.NUMBER_OF_PLAYERS);
+        String[] playerNames = settingsReader.setPlayerNames();
 
         assertEquals(playerNames[0], "Johnny");
         assertEquals(playerNames[1], "Sara");
+    }
+
+    public void shouldReturnIndexFromPlayerNamesArrayWhoChosenToStartFirst() {
+
+        ByteArrayInputStream inputStream = new ByteArrayInputStream("2\n".getBytes());
+        System.setIn(inputStream);
+        SettingsReader settingsReader = new SettingsReader();
+        String[] playerNames = new String[]{"Johnny", "Sara"};
+
+        int startsFirst = settingsReader.requestWhoStarts(playerNames);
+
+        assertEquals(startsFirst, 1);
+    }
+
+    public void shouldReturnLastOptionIndicatedByUserAsPreviousBeyondSet() {
+
+        ByteArrayInputStream inputStream = new ByteArrayInputStream("3\n0\n2\n".getBytes());
+        System.setIn(inputStream);
+        SettingsReader settingsReader = new SettingsReader();
+
+        int chosenOption = settingsReader.validateOptionChosen(2);
+
+        assertEquals(chosenOption, 2);
     }
 }
