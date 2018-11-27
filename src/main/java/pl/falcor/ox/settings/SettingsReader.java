@@ -8,19 +8,30 @@ import java.util.Locale;
 
 public class SettingsReader {
 
-    private ConsolePrinter consolePrinter = new ConsolePrinter();
-    private ConsoleReader consoleReader = new ConsoleReader();
-    private SettingsValidator settingsValidator = new SettingsValidator();
+    private ConsolePrinter consolePrinter;
+    private ConsoleReader consoleReader;
+
+    public SettingsReader() {
+        this.consolePrinter = new ConsolePrinter();
+        this.consoleReader = new ConsoleReader();
+    }
 
     public Locale setLanguage() {
 
         consolePrinter.println("Chose language/Wybierz język\n" +
                 "[1] English\n" +
                 "[2] Polski");
-        return settingsValidator.validateLanguageOption(consoleReader, consolePrinter);
+        int chosenOption = consoleReader.readNumber();
+        if (chosenOption == 1) return new Locale("en", "US");
+        if (chosenOption == 2) return new Locale("pl", "PL");
+        else {
+            consolePrinter.println("Please chose option number from the list");
+            return setLanguage();
+        }
     }
 
     public Player[] setPlayerNames(int numberOfPlayers) {
+
         Player[] players = new Player[numberOfPlayers];
         for (int i = 0; i < Settings.NUMBER_OF_PLAYERS; i++) {
             consolePrinter.println("Please provide player" + (i + 1) + " name: ");
