@@ -12,11 +12,15 @@ public class SettingsReader {
 
     public Locale setLanguage() {
 
-        consolePrinter.print("Chose language/Wybierz język\n" +
+       consolePrinter.print("Chose language/Wybierz język\n" +
                 "[1] English\n" +
                 "[2] Polski\n");
         int chosenOption = consoleReader.readNumber();
         if (chosenOption == 1) return new Locale("en", "US");
-        else return new Locale("pl", "PL");
+        if (chosenOption == 2) return new Locale("pl", "PL");
+        else {
+            consolePrinter.print("Chose option number from the list\n");
+            return setLanguage();
+        }
     }
 }
