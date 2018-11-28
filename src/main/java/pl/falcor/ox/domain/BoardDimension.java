@@ -2,13 +2,13 @@ package pl.falcor.ox.domain;
 
 public class BoardDimension {
 
-    private int boardDimension;
+    private int dimension;
 
     public BoardDimension(int boardDimension) {
-        this.boardDimension = boardDimension;
+        this.dimension = boardDimension;
     }
 
-    public int getBoardDimension() {
-        return boardDimension;
+    public int getDimension() {
+        return dimension;
     }
 }

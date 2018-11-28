@@ -1,6 +1,7 @@
 package pl.falcor.ox.settings;
 
 import org.testng.annotations.Test;
+import pl.falcor.ox.domain.BoardDimension;
 import pl.falcor.ox.domain.Player;
 import pl.falcor.ox.domain.Sign;
 
@@ -24,8 +25,9 @@ public class SettingsTest {
 
         Locale setLocale = new Locale("pl", "PL");
         Player[] players = new Player[]{new Player("Staś", Sign.X), new Player("Nel", Sign.O)};
+        BoardDimension boardDimension = new BoardDimension(5);
 
-        Settings settings = new Settings(setLocale, players);
+        Settings settings = new Settings(setLocale, players, boardDimension);
 
         assertEquals(settings.getGameLocale().getDisplayLanguage(), "polski");
         assertEquals(settings.getPlayers()[0].getName(), "Staś");

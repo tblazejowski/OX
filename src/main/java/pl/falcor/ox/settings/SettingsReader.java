@@ -7,6 +7,7 @@ import pl.falcor.ox.domain.Toogle;
 import pl.falcor.ox.io.ConsolePrinter;
 import pl.falcor.ox.io.ConsoleReader;
 
+import java.awt.*;
 import java.util.EnumSet;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -19,7 +20,13 @@ public class SettingsReader implements Toogle {
     private ResourceBundle messages;
     private final Scanner scanner;
     private Locale currentLocale = new Locale("en", "US");
-    ;
+
+    Settings requestSettings(){
+        Locale currentLocale = setLanguage();
+        Player[] players = requestStartingSign(requestWhoStarts(setPlayerNames()));
+        BoardDimension boardDimension = requestBoardDimension();
+        return new Settings(currentLocale, players, boardDimension);
+    }
 
     public SettingsReader() {
         this.scanner = new Scanner(System.in);
@@ -37,6 +44,7 @@ public class SettingsReader implements Toogle {
         } else {
             currentLocale = new Locale("pl", "PL");
             messages = ResourceBundle.getBundle("MessagesBundle", currentLocale);
+            scanner.nextLine();
             consoleReader = new ConsoleReader(currentLocale, scanner);
             return currentLocale;
         }
@@ -68,7 +76,7 @@ public class SettingsReader implements Toogle {
     public Player[] requestStartingSign(String[] playerNames) {
 
         Player[] players = new Player[Settings.NUMBER_OF_PLAYERS];
-        consolePrinter.println(playerNames[0] + messages.getString("choseSign"));
+        consolePrinter.println(playerNames[0] + " " + messages.getString("choseSign"));
         EnumSet.allOf(Sign.class).forEach(sign -> consolePrinter.println("[" + (sign.ordinal() + 1) + "] " + sign.toString()));
         int signChosen = validateOptionChosen(Sign.values().length) - 1;
         players[0] = new Player(playerNames[0], Sign.values()[signChosen]);

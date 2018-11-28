@@ -122,7 +122,7 @@ public class SettingsReaderTest {
 
         BoardDimension boardDimension = settingsReader.requestBoardDimension();
 
-        assertEquals(boardDimension.getBoardDimension(), 9);
+        assertEquals(boardDimension.getDimension(), 9);
     }
 
     public void shouldReturnRequestForPlayersNameInChosenPolishLanguage() {
@@ -139,5 +139,19 @@ public class SettingsReaderTest {
         String[] result = outputStream.toString().split("\n");
 
         assertEquals(result[result.length - 1], "Podaj imię dla gracza 2");
+    }
+
+    public void shouldReturnRequestedGameSettingsUponInputProvided(){
+
+        ByteArrayInputStream inputStream = new ByteArrayInputStream("2\nStaś\nGrażyna\n1\n2\n7\n".getBytes());
+        System.setIn(inputStream);
+        SettingsReader settingsReader = new SettingsReader();
+
+        Settings settings = settingsReader.requestSettings();
+
+        assertEquals(settings.getGameLocale().getDisplayLanguage(), "polski");
+        assertEquals(settings.getPlayers()[0].getName(), "Staś");
+        assertEquals(settings.getPlayers()[0].getSign(), Sign.O);
+        assertEquals(settings.getBoardDimension().getDimension(), 7);
     }
 }
