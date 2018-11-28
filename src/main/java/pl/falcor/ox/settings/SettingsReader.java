@@ -25,13 +25,9 @@ public class SettingsReader implements Toogle {
         consolePrinter.println("Chose language/Wybierz język\n" +
                 "[1] English\n" +
                 "[2] Polski");
-        int chosenOption = consoleReader.readNumber();
+        int chosenOption = validateOptionChosen(Settings.LANGUAGES_NUMBER);
         if (chosenOption == 1) return new Locale("en", "US");
-        if (chosenOption == 2) return new Locale("pl", "PL");
-        else {
-            consolePrinter.println("Please chose option number from the list");
-            return setLanguage();
-        }
+        else return new Locale("pl", "PL");
     }
 
     public String[] setPlayerNames() {
@@ -69,7 +65,7 @@ public class SettingsReader implements Toogle {
         return players;
     }
 
-    public BoardDimension requestBoardDimension(){
+    public BoardDimension requestBoardDimension() {
         consolePrinter.println("Please provide board dimension");
         int providedDimension = validateOptionChosen(Settings.MAX_DIMENSION);
         return new BoardDimension(providedDimension);
@@ -80,6 +76,9 @@ public class SettingsReader implements Toogle {
         int chosenOption = consoleReader.readNumber();
         if (chosenOption > 0 && chosenOption <= availableOptions)
             return chosenOption;
-        else return validateOptionChosen(availableOptions);
+        else {
+            consolePrinter.println("Please chose option number from the list");
+            return validateOptionChosen(availableOptions);
+        }
     }
 }
