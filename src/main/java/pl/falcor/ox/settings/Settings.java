@@ -7,6 +7,7 @@ import java.util.Locale;
 public class Settings {
 
     public static final int NUMBER_OF_PLAYERS = 2;
+    public static final int MAX_DIMENSION = 9;
     private final Locale gameLocale;
     private Player[] players;
 

@@ -1,5 +1,6 @@
 package pl.falcor.ox.settings;
 
+import pl.falcor.ox.domain.BoardDimension;
 import pl.falcor.ox.domain.Player;
 import pl.falcor.ox.domain.Sign;
 import pl.falcor.ox.domain.Toogle;
@@ -66,6 +67,13 @@ public class SettingsReader implements Toogle {
         if (signChosen == 0) players[1] = new Player(playerNames[1], Sign.values()[1]);
         else players[1] = new Player(playerNames[1], Sign.values()[0]);
         return players;
+    }
+
+    public BoardDimension requestBoardDimension(){
+        consolePrinter.println("Please provide board dimension");
+        int providedDimension = validateOptionChosen(Settings.MAX_DIMENSION);
+        return new BoardDimension(providedDimension);
+
     }
 
     public int validateOptionChosen(int availableOptions) {

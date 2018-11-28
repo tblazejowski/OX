@@ -1,6 +1,7 @@
 package pl.falcor.ox.settings;
 
 import org.testng.annotations.Test;
+import pl.falcor.ox.domain.BoardDimension;
 import pl.falcor.ox.domain.Player;
 import pl.falcor.ox.domain.Sign;
 
@@ -111,5 +112,16 @@ public class SettingsReaderTest {
         Player[] players = settingsReader.requestStartingSign(playerNames);
 
         assertEquals(players[0].getSign(), Sign.O);
+    }
+
+    public void shouldReturnDimensionChosenByUser() {
+
+        ByteArrayInputStream inputStream = new ByteArrayInputStream("9\n".getBytes());
+        System.setIn(inputStream);
+        SettingsReader settingsReader = new SettingsReader();
+
+        BoardDimension boardDimension = settingsReader.requestBoardDimension();
+
+        assertEquals(boardDimension.getBoardDimension(), 9);
     }
 }
