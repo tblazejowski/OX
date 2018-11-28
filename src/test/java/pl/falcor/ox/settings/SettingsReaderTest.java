@@ -124,4 +124,19 @@ public class SettingsReaderTest {
 
         assertEquals(boardDimension.getBoardDimension(), 9);
     }
+
+    public void shouldReturnRequestForPlayersNameInChosenPolishLanguage() {
+
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        ByteArrayInputStream inputStream = new ByteArrayInputStream("2\nStaś\nGrażyna\n".getBytes());
+        System.setOut(new PrintStream(outputStream));
+        System.setIn(inputStream);
+        SettingsReader settingsReader = new SettingsReader();
+
+        Locale.setDefault(settingsReader.setLanguage());
+        settingsReader.setPlayerNames();
+        String[] result = outputStream.toString().split("\n");
+
+        assertEquals(result[result.length - 1], "Please provide a number.");
+    }
 }
