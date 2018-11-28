@@ -7,5 +7,4 @@ public interface Toogle {
         objects[0] = objects[1];
         objects[1] = temporary;
     }
-
 }
