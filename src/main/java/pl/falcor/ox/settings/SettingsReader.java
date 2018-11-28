@@ -9,32 +9,40 @@ import pl.falcor.ox.io.ConsoleReader;
 
 import java.util.EnumSet;
 import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class SettingsReader implements Toogle {
 
     private ConsolePrinter consolePrinter;
     private ConsoleReader consoleReader;
+    private ResourceBundle messages;
 
     public SettingsReader() {
         this.consolePrinter = new ConsolePrinter();
         this.consoleReader = new ConsoleReader();
+        this.messages = ResourceBundle.getBundle("MessagesBundle", new Locale("en", "US"));
     }
 
     public Locale setLanguage() {
 
-        consolePrinter.println("Chose language/Wybierz język\n" +
-                "[1] English\n" +
-                "[2] Polski");
+        consolePrinter.println(messages.getString("choseLanguage"));
         int chosenOption = validateOptionChosen(Settings.LANGUAGES_NUMBER);
-        if (chosenOption == 1) return new Locale("en", "US");
-        else return new Locale("pl", "PL");
+        if (chosenOption == 1) {
+            Locale currentLocale = new Locale("en", "US");
+            messages = ResourceBundle.getBundle("MessagesBundle", currentLocale);
+            return currentLocale;
+        } else {
+            Locale currentLocale = new Locale("pl", "PL");
+            messages = ResourceBundle.getBundle("MessagesBundle", currentLocale);
+            return currentLocale;
+        }
     }
 
     public String[] setPlayerNames() {
 
         String[] playerNames = new String[Settings.NUMBER_OF_PLAYERS];
         for (int i = 0; i < Settings.NUMBER_OF_PLAYERS; i++) {
-            consolePrinter.println("Please provide player" + (i + 1) + " name: ");
+            consolePrinter.println(messages.getString("setNames") + (i + 1));
             playerNames[i] = (consoleReader.readLine());
         }
         return playerNames;

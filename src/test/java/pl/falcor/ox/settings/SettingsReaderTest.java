@@ -137,6 +137,6 @@ public class SettingsReaderTest {
         settingsReader.setPlayerNames();
         String[] result = outputStream.toString().split("\n");
 
-        assertEquals(result[result.length - 1], "Please provide a number.");
+        assertEquals(result[result.length - 1], "Podaj imię dla gracza 2");
     }
 }
