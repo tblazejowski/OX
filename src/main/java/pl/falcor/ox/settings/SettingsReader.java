@@ -50,7 +50,7 @@ public class SettingsReader implements Toogle {
 
     public String[] requestWhoStarts(String[] playerNames) {
 
-        consolePrinter.println("Please indicate who starts:");
+        consolePrinter.println(messages.getString("indicateWhoStarts"));
         for (int i = 0; i < Settings.NUMBER_OF_PLAYERS; i++) {
             consolePrinter.println("[" + (i + 1) + "] " + playerNames[i]);
         }
@@ -64,7 +64,7 @@ public class SettingsReader implements Toogle {
     public Player[] requestStartingSign(String[] playerNames) {
 
         Player[] players = new Player[Settings.NUMBER_OF_PLAYERS];
-        consolePrinter.println(playerNames[0] + " please chose your sign:");
+        consolePrinter.println(playerNames[0] + messages.getString("choseSign"));
         EnumSet.allOf(Sign.class).forEach(sign -> consolePrinter.println("[" + (sign.ordinal() + 1) + "] " + sign.toString()));
         int signChosen = validateOptionChosen(Sign.values().length) - 1;
         players[0] = new Player(playerNames[0], Sign.values()[signChosen]);
@@ -74,7 +74,7 @@ public class SettingsReader implements Toogle {
     }
 
     public BoardDimension requestBoardDimension() {
-        consolePrinter.println("Please provide board dimension");
+        consolePrinter.println(messages.getString("choseDimension"));
         int providedDimension = validateOptionChosen(Settings.MAX_DIMENSION);
         return new BoardDimension(providedDimension);
 
@@ -85,7 +85,7 @@ public class SettingsReader implements Toogle {
         if (chosenOption > 0 && chosenOption <= availableOptions)
             return chosenOption;
         else {
-            consolePrinter.println("Please chose option number from the list");
+            consolePrinter.println(messages.getString("errorOption"));
             return validateOptionChosen(availableOptions);
         }
     }
