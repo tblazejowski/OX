@@ -5,6 +5,8 @@ import org.testng.annotations.Test;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Locale;
+import java.util.Scanner;
 
 import static org.testng.Assert.assertEquals;
 
@@ -14,7 +16,7 @@ public class ConsoleReaderTest {
     public void shouldReturnTheSameNumberWhenNumberIsProvidedInInput() {
         ByteArrayInputStream inputStream = new ByteArrayInputStream("2\n".getBytes());
         System.setIn(inputStream);
-        ConsoleReader consoleReader = new ConsoleReader();
+        ConsoleReader consoleReader = new ConsoleReader(new Locale("en", "US"), new Scanner(System.in));
 
         assertEquals(consoleReader.readNumber(), 2);
     }
@@ -23,7 +25,7 @@ public class ConsoleReaderTest {
     public void shouldReturnTheSameTextWhenTextIsProvidedInInput() {
         ByteArrayInputStream inputStream = new ByteArrayInputStream("any text input\n".getBytes());
         System.setIn(inputStream);
-        ConsoleReader consoleReader = new ConsoleReader();
+        ConsoleReader consoleReader = new ConsoleReader(new Locale("en", "US"), new Scanner(System.in));
 
         assertEquals(consoleReader.readLine(), "any text input");
     }
@@ -34,7 +36,7 @@ public class ConsoleReaderTest {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setIn(inputStream);
         System.setOut(new PrintStream(outputStream));
-        ConsoleReader consoleReader = new ConsoleReader();
+        ConsoleReader consoleReader = new ConsoleReader(new Locale("en", "US"), new Scanner(System.in));
 
         consoleReader.readNumber();
 

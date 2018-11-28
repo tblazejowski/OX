@@ -10,16 +10,21 @@ import pl.falcor.ox.io.ConsoleReader;
 import java.util.EnumSet;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 public class SettingsReader implements Toogle {
 
     private ConsolePrinter consolePrinter;
     private ConsoleReader consoleReader;
     private ResourceBundle messages;
+    private final Scanner scanner;
+    private Locale currentLocale = new Locale("en", "US");
+    ;
 
     public SettingsReader() {
+        this.scanner = new Scanner(System.in);
         this.consolePrinter = new ConsolePrinter();
-        this.consoleReader = new ConsoleReader();
+        this.consoleReader = new ConsoleReader(new Locale("en", "US"), scanner);
         this.messages = ResourceBundle.getBundle("MessagesBundle", new Locale("en", "US"));
     }
 
@@ -28,12 +33,11 @@ public class SettingsReader implements Toogle {
         consolePrinter.println(messages.getString("choseLanguage"));
         int chosenOption = validateOptionChosen(Settings.LANGUAGES_NUMBER);
         if (chosenOption == 1) {
-            Locale currentLocale = new Locale("en", "US");
-            messages = ResourceBundle.getBundle("MessagesBundle", currentLocale);
             return currentLocale;
         } else {
-            Locale currentLocale = new Locale("pl", "PL");
+            currentLocale = new Locale("pl", "PL");
             messages = ResourceBundle.getBundle("MessagesBundle", currentLocale);
+            consoleReader = new ConsoleReader(currentLocale, scanner);
             return currentLocale;
         }
     }

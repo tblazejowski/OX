@@ -1,16 +1,20 @@
 package pl.falcor.ox.io;
 
 import java.util.InputMismatchException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class ConsoleReader implements GameReader {
 
-    private final Scanner scanner;
-    private final ConsolePrinter consolePrinter;
+    private Scanner scanner;
+    private ConsolePrinter consolePrinter;
+    private ResourceBundle messages;
 
-    public ConsoleReader() {
-        this.scanner = new Scanner(System.in);
+    public ConsoleReader(Locale currentLocale, Scanner scanner) {
+        this.scanner = scanner;
         this.consolePrinter = new ConsolePrinter();
+        this.messages = ResourceBundle.getBundle("MessagesBundle", currentLocale);
     }
 
     public int readNumber() {
@@ -18,7 +22,7 @@ public class ConsoleReader implements GameReader {
         try {
             return scanner.nextInt();
         } catch (InputMismatchException inputMismatchException) {
-            consolePrinter.println("Please provide a number.");
+            consolePrinter.println(messages.getString("notNumber"));
             scanner.nextLine();
             return readNumber();
         }
@@ -29,7 +33,7 @@ public class ConsoleReader implements GameReader {
         try {
             return scanner.nextLine();
         } catch (InputMismatchException inputMismatchException) {
-            consolePrinter.println("Something went wrong please try again: ");
+            consolePrinter.println(messages.getString("unexpected"));
             scanner.nextLine();
             return readLine();
         }

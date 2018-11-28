@@ -133,7 +133,8 @@ public class SettingsReaderTest {
         System.setIn(inputStream);
         SettingsReader settingsReader = new SettingsReader();
 
-        Locale.setDefault(settingsReader.setLanguage());
+        settingsReader.setLanguage();
+        System.setIn(inputStream);
         settingsReader.setPlayerNames();
         String[] result = outputStream.toString().split("\n");
 
