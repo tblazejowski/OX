@@ -1,9 +1,10 @@
-package pl.falcor.ox.game;
+package pl.falcor.ox.arbiter;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import pl.falcor.ox.arbiter.Arbiter;
 import pl.falcor.ox.board.Board;
 import pl.falcor.ox.board.BoardDimension;
 import pl.falcor.ox.board.Field;

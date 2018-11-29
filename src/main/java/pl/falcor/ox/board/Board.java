@@ -19,6 +19,10 @@ public class Board {
         return gameBoard;
     }
 
+    public BoardDimension getBoardDimension() {
+        return boardDimension;
+    }
+
     public void addSign(Field field, Sign sign){
         gameBoard.put(field, sign);
     }

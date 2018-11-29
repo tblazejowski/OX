@@ -1,4 +1,4 @@
-package pl.falcor.ox.game;
+package pl.falcor.ox.arbiter;
 
 import pl.falcor.ox.board.Board;
 
