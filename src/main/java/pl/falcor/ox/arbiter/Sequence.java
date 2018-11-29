@@ -18,6 +18,10 @@ public class Sequence {
         sequence.add(field);
     }
 
+    public Set<Field> getSequence() {
+        return sequence;
+    }
+
     @Override
     public String toString() {
         return "Sequence{" + sequence + '}';
