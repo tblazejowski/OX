@@ -20,12 +20,17 @@ public class SequenceSet {
         return sequenceSet;
     }
 
-    void generateRowsSequenceSets(){
+    void generateRowsSequenceSets() {
         int dimension = board.getBoardDimension().getDimension();
         IntStream.iterate(1, i -> i + dimension).limit(dimension).forEach(i -> {
             Sequence sequence = new Sequence();
-            IntStream.iterate(i, j -> j + 1).limit(4).forEach(k -> sequence.addFieldToSequence(new Field(k)));
+            IntStream.iterate(i, j -> j + 1).limit(dimension).forEach(k -> sequence.addFieldToSequence(new Field(k)));
             sequenceSet.add(sequence);
         });
+    }
+
+    @Override
+    public String toString() {
+        return "SequenceSet{" + sequenceSet + '}';
     }
 }
