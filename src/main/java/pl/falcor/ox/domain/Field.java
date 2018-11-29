@@ -2,19 +2,13 @@ package pl.falcor.ox.domain;
 
 public class Field {
 
-    private int row;
-    private int column;
+    private int position;
 
-    public Field(int row, int column) {
-        this.row = row;
-        this.column = column;
+    public Field(int position) {
+        this.position = position;
     }
 
-    public int getRow() {
-        return row;
-    }
-
-    public int getColumn() {
-        return column;
+    public int getPosition() {
+        return position;
     }
 }

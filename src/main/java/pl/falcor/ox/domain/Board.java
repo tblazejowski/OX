@@ -11,23 +11,24 @@ public class Board {
     public Board(BoardDimension boardDimension) {
         this.boardDimension = boardDimension;
         this.gameBoard = new HashMap<>();
-        for (int i = 1; i <= boardDimension.getDimension(); i++)
-            for (int j = 1; j <= boardDimension.getDimension(); j++) {
-                gameBoard.put(new Field(i, j), null);
-            }
+        for (int i = 1; i <= Math.pow(boardDimension.getDimension(), 2); i++)
+            gameBoard.put(new Field(i), null);
     }
 
     public Map<Field, Sign> getGameBoard() {
         return gameBoard;
     }
 
-//    @Override
-//    public String toString() {
-//
-//        StringBuilder result = new StringBuilder();
-//        for (Map.Entry<Field, Sign> fieldSignEntry : gameBoard.entrySet()){
-//            result.append(fieldSignEntry.getKey().getRow() + fieldSignEntry.getKey().getColumn() + " ");
-//        }
-//        return result.toString();
-//    }
+    @Override
+    public String toString() {
+
+        StringBuilder result = new StringBuilder();
+        for (int i = 1; i <= Math.pow(boardDimension.getDimension(), 2); i++) {
+            if (i / 10 < 1) result.append(" ");
+            if (gameBoard.get(new Field(i)) == null) result.append(" " + i);
+            else result.append(" " + gameBoard.get(new Field(i)));
+            if (i % boardDimension.getDimension() == 0) result.append("\n");
+        }
+        return result.toString();
+    }
 }
