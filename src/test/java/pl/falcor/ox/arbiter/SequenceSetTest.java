@@ -43,7 +43,7 @@ public class SequenceSetTest {
         assertEquals(sequenceSet.getSequenceSet().size(), 7);
     }
 
-    public void ShouldConfirmColumnSequencesSetForSpecificBoardContainExpectedSequence() {
+    public void ShouldConfirmColumnSequencesSetForSpecificBoardContainsExpectedSequence() {
         Board board = new Board(new BoardDimension(5));
         SequenceSet sequenceSet = new SequenceSet(board);
         Sequence sequence1 = new Sequence();
@@ -58,7 +58,7 @@ public class SequenceSetTest {
         assertEquals(sequenceSet.getSequenceSet().contains(sequence1), true);
     }
 
-    public void ShouldConfirmMajorDiagonalSequencesSetForSpecificBoardContainExpectedSequence() {
+    public void ShouldConfirmMajorDiagonalSequencesSetForSpecificBoardContainsExpectedSequence() {
         Board board = new Board(new BoardDimension(5));
         SequenceSet sequenceSet = new SequenceSet(board);
         Sequence sequence1 = new Sequence();
@@ -73,7 +73,7 @@ public class SequenceSetTest {
         assertEquals(sequenceSet.getSequenceSet().contains(sequence1), true);
     }
 
-    public void ShouldConfirmMinorDiagonalSequencesSetForSpecificBoardContainExpectedSequence() {
+    public void ShouldConfirmMinorDiagonalSequencesSetForSpecificBoardContainsExpectedSequence() {
         Board board = new Board(new BoardDimension(5));
         SequenceSet sequenceSet = new SequenceSet(board);
         Sequence sequence1 = new Sequence();
@@ -84,9 +84,56 @@ public class SequenceSetTest {
         sequence1.addFieldToSequence(new Field(21));
 
         sequenceSet.generateMinorDiagonalSequenceSet();
-        System.out.println(sequence1);
-        System.out.println(sequenceSet);
 
         assertEquals(sequenceSet.getSequenceSet().contains(sequence1), true);
+    }
+
+    public void ShouldConfirmSequencesSetForSpecificBoardContainsAllExpectedSequences() {
+        Board board = new Board(new BoardDimension(3));
+        SequenceSet sequenceSet = new SequenceSet(board);
+        Sequence sequence1 = new Sequence();
+        Sequence sequence2 = new Sequence();
+        Sequence sequence3 = new Sequence();
+        Sequence sequence4 = new Sequence();
+        Sequence sequence5 = new Sequence();
+        Sequence sequence6 = new Sequence();
+        Sequence sequence7 = new Sequence();
+        Sequence sequence8 = new Sequence();
+        sequence1.addFieldToSequence(new Field(1));
+        sequence1.addFieldToSequence(new Field(2));
+        sequence1.addFieldToSequence(new Field(3));
+        sequence2.addFieldToSequence(new Field(4));
+        sequence2.addFieldToSequence(new Field(5));
+        sequence2.addFieldToSequence(new Field(6));
+        sequence3.addFieldToSequence(new Field(7));
+        sequence3.addFieldToSequence(new Field(8));
+        sequence3.addFieldToSequence(new Field(9));
+        sequence4.addFieldToSequence(new Field(1));
+        sequence4.addFieldToSequence(new Field(4));
+        sequence4.addFieldToSequence(new Field(7));
+        sequence5.addFieldToSequence(new Field(2));
+        sequence5.addFieldToSequence(new Field(5));
+        sequence5.addFieldToSequence(new Field(8));
+        sequence6.addFieldToSequence(new Field(3));
+        sequence6.addFieldToSequence(new Field(6));
+        sequence6.addFieldToSequence(new Field(9));
+        sequence7.addFieldToSequence(new Field(1));
+        sequence7.addFieldToSequence(new Field(5));
+        sequence7.addFieldToSequence(new Field(9));
+        sequence8.addFieldToSequence(new Field(3));
+        sequence8.addFieldToSequence(new Field(5));
+        sequence8.addFieldToSequence(new Field(7));
+
+        sequenceSet.generateSequenceSet();
+
+        assertEquals(sequenceSet.getSequenceSet().contains(sequence1), true);
+        assertEquals(sequenceSet.getSequenceSet().contains(sequence2), true);
+        assertEquals(sequenceSet.getSequenceSet().contains(sequence3), true);
+        assertEquals(sequenceSet.getSequenceSet().contains(sequence4), true);
+        assertEquals(sequenceSet.getSequenceSet().contains(sequence5), true);
+        assertEquals(sequenceSet.getSequenceSet().contains(sequence6), true);
+        assertEquals(sequenceSet.getSequenceSet().contains(sequence7), true);
+        assertEquals(sequenceSet.getSequenceSet().contains(sequence8), true);
+        assertEquals(sequenceSet.getSequenceSet().size(), 8);
     }
 }

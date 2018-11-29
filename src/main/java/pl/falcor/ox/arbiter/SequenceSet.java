@@ -20,6 +20,13 @@ public class SequenceSet {
         return sequenceSet;
     }
 
+    void generateSequenceSet(){
+        generateRowsSequenceSet();
+        generateColumnsSequenceSet();
+        generateMajorDiagonalSequenceSet();
+        generateMinorDiagonalSequenceSet();
+    }
+
     void generateRowsSequenceSet() {
         int dimension = board.getBoardDimension().getDimension();
         IntStream.iterate(1, i -> i + dimension).limit(dimension).forEach(i -> {
