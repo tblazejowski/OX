@@ -1,4 +1,4 @@
-package pl.falcor.ox.domain;
+package pl.falcor.ox.board;
 
 public enum Sign {
 

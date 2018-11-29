@@ -1,9 +1,10 @@
-package pl.falcor.ox.domain;
+package pl.falcor.ox.game;
 
 import org.testng.annotations.Test;
 import pl.falcor.ox.board.Board;
 import pl.falcor.ox.board.BoardDimension;
 import pl.falcor.ox.board.Field;
+import pl.falcor.ox.board.Sign;
 
 import static org.testng.Assert.*;
 

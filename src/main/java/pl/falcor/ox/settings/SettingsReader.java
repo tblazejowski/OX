@@ -1,9 +1,9 @@
 package pl.falcor.ox.settings;
 
 import pl.falcor.ox.board.BoardDimension;
-import pl.falcor.ox.domain.Player;
-import pl.falcor.ox.domain.Sign;
-import pl.falcor.ox.domain.Toogle;
+import pl.falcor.ox.game.Player;
+import pl.falcor.ox.board.Sign;
+import pl.falcor.ox.game.Toogle;
 import pl.falcor.ox.io.ConsolePrinter;
 import pl.falcor.ox.io.ConsoleReader;
 

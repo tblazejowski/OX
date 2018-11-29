@@ -1,4 +1,6 @@
-package pl.falcor.ox.domain;
+package pl.falcor.ox.game;
+
+import pl.falcor.ox.board.Sign;
 
 public class Player {
 

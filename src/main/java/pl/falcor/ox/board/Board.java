@@ -1,7 +1,5 @@
 package pl.falcor.ox.board;
 
-import pl.falcor.ox.domain.Sign;
-
 import java.util.HashMap;
 import java.util.Map;
 
