@@ -19,6 +19,10 @@ public class Board {
         return gameBoard;
     }
 
+    public void addSign(Field field, Sign sign){
+        gameBoard.put(field, sign);
+    }
+
     @Override
     public String toString() {
 
