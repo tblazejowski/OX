@@ -38,6 +38,22 @@ public class SequenceSet {
         });
     }
 
+    void generateMajorDiagonalSequenceSet() {
+        Sequence sequence = new Sequence();
+        int dimension = board.getBoardDimension().getDimension();
+        IntStream.iterate(1, i -> i + dimension + 1).limit(dimension)
+                .forEach(j -> sequence.addFieldToSequence(new Field(j)));
+        sequenceSet.add(sequence);
+    }
+
+    void generateMinorDiagonalSequenceSet() {
+        Sequence sequence = new Sequence();
+        int dimension = board.getBoardDimension().getDimension();
+        IntStream.iterate(dimension, i -> i + (dimension - 1)).limit(dimension)
+                .forEach(j -> sequence.addFieldToSequence(new Field(j)));
+        sequenceSet.add(sequence);
+    }
+
     @Override
     public String toString() {
         return "SequenceSet{" + sequenceSet + '}';
