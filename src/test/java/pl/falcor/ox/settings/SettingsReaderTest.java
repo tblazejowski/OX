@@ -1,7 +1,7 @@
 package pl.falcor.ox.settings;
 
 import org.testng.annotations.Test;
-import pl.falcor.ox.domain.BoardDimension;
+import pl.falcor.ox.board.BoardDimension;
 import pl.falcor.ox.domain.Player;
 import pl.falcor.ox.domain.Sign;
 
