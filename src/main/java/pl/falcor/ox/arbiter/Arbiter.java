@@ -28,7 +28,7 @@ public class Arbiter {
         cleanUsedSequencesFromFreePool(field, sign);
         trashSequencesUsedByBothSignPools(field, sign);
         removeUsedFieldFromPotentialSequence(field, sign);
-        return searchForEmptySequence();
+        return searchForEmptySequence() || isDrawn();
     }
 
     boolean isDrawn(){
