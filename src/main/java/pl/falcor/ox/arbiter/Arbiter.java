@@ -13,23 +13,6 @@ public class Arbiter {
     private SequenceSet sequenceSet;
     private Set<Sequence> setX;
     private Set<Sequence> setO;
-    private Set<Sequence> trashSet;
-
-    public Set<Sequence> getSetX() {
-        return setX;
-    }
-
-    public Set<Sequence> getSetO() {
-        return setO;
-    }
-
-    public Set<Sequence> getTrashSet() {
-        return trashSet;
-    }
-
-    public SequenceSet getSequenceSet() {
-        return sequenceSet;
-    }
 
     public Arbiter(Board gameBoard) {
         this.gameBoard = gameBoard;
@@ -37,38 +20,40 @@ public class Arbiter {
         sequenceSet.generateSequenceSet();
         this.setX = new HashSet<>();
         this.setO = new HashSet<>();
-        this.trashSet = new HashSet<>();
     }
 
     boolean isWinningSign(Field field, Sign sign) {
 
         assignFreeSequenceToSpecificSign(field, sign);
-        removeUsedSequenceFromFreePool(field, sign);
-        removeUsedSequenceFromOppositeSet(field, sign);
-        removeTrashedSequences(field, sign);
-        return false;
+        cleanUsedSequencesFromFreePool(field, sign);
+        trashSequencesUsedByBothSignPools(field, sign);
+        removeUsedFieldFromPotentialSequence(field, sign);
+        return searchForEmptySequence();
     }
 
-    private void removeTrashedSequences(Field field, Sign sign) {
-        if (sign.equals(Sign.X))
-            trashSet.stream().filter(sequence -> sequence.getSequence().contains(field)).forEach(sequence -> setO.remove(sequence));
-        else
-            trashSet.stream().filter(sequence -> sequence.getSequence().contains(field)).forEach(sequence -> setX.remove(sequence));
-        trashSet.clear();
+    private boolean searchForEmptySequence() {
+        return setX.stream().anyMatch(sequence -> sequence.getSequence().size() == 0) || setO.stream().anyMatch(sequence -> sequence.getSequence().size() == 0);
     }
 
-    private void removeUsedSequenceFromOppositeSet(Field field, Sign sign) {
+    private void removeUsedFieldFromPotentialSequence(Field field, Sign sign) {
         if (sign.equals(Sign.X))
-            setO.stream().filter(sequence -> sequence.getSequence().contains(field)).forEach(sequence -> trashSet.add(sequence));
+            setX.stream().filter(sequence -> sequence.getSequence().contains(field)).forEach(sequence -> sequence.getSequence().remove(field));
         else
-            setX.stream().filter(sequence -> sequence.getSequence().contains(field)).forEach(sequence -> trashSet.add(sequence));
+            setO.stream().filter(sequence -> sequence.getSequence().contains(field)).forEach(sequence -> sequence.getSequence().remove(field));
     }
 
-    private void removeUsedSequenceFromFreePool(Field field, Sign sign) {
+    private void trashSequencesUsedByBothSignPools(Field field, Sign sign) {
         if (sign.equals(Sign.X))
-            setX.stream().filter(sequence -> sequence.getSequence().contains(field)).forEach(sequence -> sequenceSet.getSequenceSet().remove(sequence));
+            setO.removeIf(sequence -> sequence.getSequence().contains(field));
         else
-            setO.stream().filter(sequence -> sequence.getSequence().contains(field)).forEach(sequence -> sequenceSet.getSequenceSet().remove(sequence));
+            setX.removeIf(sequence -> sequence.getSequence().contains(field));
+    }
+
+    private void cleanUsedSequencesFromFreePool(Field field, Sign sign) {
+        if (sign.equals(Sign.X))
+            sequenceSet.getSequenceSet().removeAll(setX);
+        else
+            sequenceSet.getSequenceSet().removeAll(setO);
     }
 
     private void assignFreeSequenceToSpecificSign(Field field, Sign sign) {
