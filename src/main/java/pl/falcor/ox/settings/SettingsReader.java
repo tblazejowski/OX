@@ -20,7 +20,7 @@ public class SettingsReader implements Toogle {
     private final Scanner scanner;
     private Locale currentLocale = new Locale("en", "US");
 
-    Settings requestSettings(){
+    public Settings requestSettings(){
         Locale currentLocale = setLanguage();
         Player[] players = requestStartingSign(requestWhoStarts(setPlayerNames()));
         BoardDimension boardDimension = requestBoardDimension();
@@ -34,7 +34,7 @@ public class SettingsReader implements Toogle {
         this.messages = ResourceBundle.getBundle("MessagesBundle", new Locale("en", "US"));
     }
 
-    public Locale setLanguage() {
+    Locale setLanguage() {
 
         consolePrinter.println(messages.getString("choseLanguage"));
         int chosenOption = validateOptionChosen(Settings.LANGUAGES_NUMBER);
@@ -49,7 +49,7 @@ public class SettingsReader implements Toogle {
         }
     }
 
-    public String[] setPlayerNames() {
+    String[] setPlayerNames() {
 
         String[] playerNames = new String[Settings.NUMBER_OF_PLAYERS];
         for (int i = 0; i < Settings.NUMBER_OF_PLAYERS; i++) {
@@ -59,7 +59,7 @@ public class SettingsReader implements Toogle {
         return playerNames;
     }
 
-    public String[] requestWhoStarts(String[] playerNames) {
+    String[] requestWhoStarts(String[] playerNames) {
 
         consolePrinter.println(messages.getString("indicateWhoStarts"));
         for (int i = 0; i < Settings.NUMBER_OF_PLAYERS; i++) {
@@ -72,7 +72,7 @@ public class SettingsReader implements Toogle {
         }
     }
 
-    public Player[] requestStartingSign(String[] playerNames) {
+    Player[] requestStartingSign(String[] playerNames) {
 
         Player[] players = new Player[Settings.NUMBER_OF_PLAYERS];
         consolePrinter.println(playerNames[0] + " " + messages.getString("choseSign"));
@@ -84,14 +84,14 @@ public class SettingsReader implements Toogle {
         return players;
     }
 
-    public BoardDimension requestBoardDimension() {
+    BoardDimension requestBoardDimension() {
         consolePrinter.println(messages.getString("choseDimension"));
         int providedDimension = validateOptionChosen(Settings.MAX_DIMENSION);
         return new BoardDimension(providedDimension);
 
     }
 
-    public int validateOptionChosen(int availableOptions) {
+    int validateOptionChosen(int availableOptions) {
         int chosenOption = consoleReader.readNumber();
         if (chosenOption > 0 && chosenOption <= availableOptions)
             return chosenOption;
