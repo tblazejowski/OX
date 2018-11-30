@@ -139,4 +139,43 @@ public class ArbiterTest {
 
         Assert.assertEquals(arbiters[4].isWinningSign(field, sign), false);
     }
+    @DataProvider(name = "testWinningConditionIsMetInLastFulfillingBoardMove")
+    public static Object[][] winningConditionIsMetInLastFulfillingBoardMove() {
+        return new Object[][]{
+                {new Field(1), Sign.O},
+                {new Field(2), Sign.X},
+                {new Field(3), Sign.O},
+                {new Field(4), Sign.X},
+                {new Field(5), Sign.O},
+                {new Field(6), Sign.O},
+                {new Field(7), Sign.X},
+                {new Field(8), Sign.O},
+                {new Field(9), Sign.X},
+                {new Field(10), Sign.O},
+                {new Field(11), Sign.O},
+                {new Field(12), Sign.X},
+                {new Field(13), Sign.O},
+                {new Field(14), Sign.X},
+                {new Field(15), Sign.O},
+                {new Field(16), Sign.O},
+                {new Field(17), Sign.X},
+                {new Field(18), Sign.O},
+                {new Field(19), Sign.X},
+                {new Field(20), Sign.O},
+                {new Field(21), Sign.X},
+                {new Field(22), Sign.O},
+                {new Field(23), Sign.X},
+                {new Field(24), Sign.O},
+                {new Field(25), Sign.O},
+        };
+    }
+
+    @Test(dataProvider = "testWinningConditionIsMetInLastFulfillingBoardMove")
+    public void shouldConfirmWinningConditionIsMetInLastFulfillingBoardMove(Field field, Sign sign) {
+
+        boards[5].addSign(field, sign);
+
+        if (field.getPosition() == 25) Assert.assertEquals(arbiters[5].isWinningSign(field, sign), true);
+        else Assert.assertEquals(arbiters[5].isWinningSign(field, sign), false);
+    }
 }
