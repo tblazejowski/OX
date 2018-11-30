@@ -5,17 +5,22 @@ import pl.falcor.ox.settings.SettingsReader;
 
 public class Game {
 
-    private static final int NUMBER_OF_MATCHES = 1;
+    private static final int NUMBER_OF_MATCHES = 3;
     private Settings settings;
+    private SettingsReader settingsReader;
 
     public Settings getSettings() {
         return settings;
     }
 
-    public void initializeGame() {
-        SettingsReader settingsReader = new SettingsReader();
-        settings = settingsReader.requestSettings();
+    public void start() {
+        initializeGame();
         Match match = new Match(settingsReader, settings);
         match.playMatch();
+    }
+
+    void initializeGame() {
+        settingsReader = new SettingsReader();
+        settings = settingsReader.requestSettings();
     }
 }
