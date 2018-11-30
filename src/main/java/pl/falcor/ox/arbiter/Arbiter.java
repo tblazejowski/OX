@@ -31,6 +31,11 @@ public class Arbiter {
         return searchForEmptySequence();
     }
 
+    boolean isDrawn(Field field, Sign sign){
+        if(setX.isEmpty() && setO.isEmpty()) return true;
+        else return false;
+    }
+
     private boolean searchForEmptySequence() {
         return setX.stream().anyMatch(sequence -> sequence.getSequence().size() == 0) || setO.stream().anyMatch(sequence -> sequence.getSequence().size() == 0);
     }

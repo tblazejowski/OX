@@ -137,8 +137,13 @@ public class ArbiterTest {
 
         boards[4].addSign(field, sign);
 
-        Assert.assertEquals(arbiters[4].isWinningSign(field, sign), false);
+        if (field.getPosition() < 25) Assert.assertEquals(arbiters[4].isWinningSign(field, sign) || arbiters[4].isDrawn(field,sign), false);
+        else {
+            Assert.assertEquals(arbiters[4].isWinningSign(field, sign), false);
+            Assert.assertEquals(arbiters[4].isDrawn(field, sign), true);
+        }
     }
+
     @DataProvider(name = "testWinningConditionIsMetInLastFulfillingBoardMove")
     public static Object[][] winningConditionIsMetInLastFulfillingBoardMove() {
         return new Object[][]{
