@@ -22,7 +22,7 @@ public class Arbiter {
         this.setO = new HashSet<>();
     }
 
-    boolean isWinningSign(Field field, Sign sign) {
+    public boolean isWinningSign(Field field, Sign sign) {
 
         assignFreeSequenceToSpecificSign(field, sign);
         cleanUsedSequencesFromFreePool(field, sign);
@@ -31,7 +31,7 @@ public class Arbiter {
         return searchForEmptySequence();
     }
 
-    boolean isDrawn(Field field, Sign sign){
+    boolean isDrawn(){
         if(setX.isEmpty() && setO.isEmpty()) return true;
         else return false;
     }

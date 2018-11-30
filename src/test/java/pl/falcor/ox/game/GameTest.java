@@ -2,7 +2,6 @@ package pl.falcor.ox.game;
 
 import org.testng.annotations.Test;
 import pl.falcor.ox.board.Sign;
-import pl.falcor.ox.settings.Settings;
 
 import java.io.ByteArrayInputStream;
 

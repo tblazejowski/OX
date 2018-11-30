@@ -20,6 +20,18 @@ public class SettingsReader implements Toogle {
     private final Scanner scanner;
     private Locale currentLocale = new Locale("en", "US");
 
+    public ConsolePrinter getConsolePrinter() {
+        return consolePrinter;
+    }
+
+    public ConsoleReader getConsoleReader() {
+        return consoleReader;
+    }
+
+    public ResourceBundle getMessages() {
+        return messages;
+    }
+
     public Settings requestSettings(){
         Locale currentLocale = setLanguage();
         Player[] players = requestStartingSign(requestWhoStarts(setPlayerNames()));
@@ -39,6 +51,7 @@ public class SettingsReader implements Toogle {
         consolePrinter.println(messages.getString("choseLanguage"));
         int chosenOption = validateOptionChosen(Settings.LANGUAGES_NUMBER);
         if (chosenOption == 1) {
+            scanner.nextLine();
             return currentLocale;
         } else {
             currentLocale = new Locale("pl", "PL");
@@ -86,7 +99,7 @@ public class SettingsReader implements Toogle {
 
     BoardDimension requestBoardDimension() {
         consolePrinter.println(messages.getString("choseDimension"));
-        int providedDimension = validateOptionChosen(Settings.MAX_DIMENSION);
+        int providedDimension = validateDimnesionChosen(Settings.MAX_DIMENSION);
         return new BoardDimension(providedDimension);
 
     }
@@ -96,8 +109,18 @@ public class SettingsReader implements Toogle {
         if (chosenOption > 0 && chosenOption <= availableOptions)
             return chosenOption;
         else {
-            consolePrinter.println(messages.getString("errorOption"));
+            consolePrinter.println(messages.getString("errOption"));
             return validateOptionChosen(availableOptions);
+        }
+    }
+
+    int validateDimnesionChosen(int maxDimension) {
+        int chosenDimension = consoleReader.readNumber();
+        if (chosenDimension > 2 && chosenDimension <= maxDimension)
+            return chosenDimension;
+        else {
+            consolePrinter.println(messages.getString("errDimension"));
+            return validateOptionChosen(maxDimension);
         }
     }
 }
