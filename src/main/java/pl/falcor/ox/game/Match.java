@@ -31,15 +31,16 @@ public class Match {
     }
 
     public void playMatch() {
+        boolean isWon = false;
         consolePrinter.println(settings.getPlayers()[0].getName() + " "
                 + messages.getString("kickoffMessage") + " "
                 + settings.getPlayers()[0].getSign() + "\n"
                 + "\n" + matchBoard.toString());
-        while (turn < 5) {
+        while (!isWon) {
             Field chosenField = new Field(requestMove());
             matchBoard.addSign(chosenField, settings.getPlayers()[turn % 2].getSign());
-
-            consolePrinter.println(matchBoard.toString() + "\n" + arbiter.isWinningSign(chosenField, settings.getPlayers()[turn % 2].getSign()));
+            isWon = arbiter.isWinningSign(chosenField, settings.getPlayers()[turn % 2].getSign());
+            consolePrinter.println(matchBoard.toString());
             turn++;
         }
     }
