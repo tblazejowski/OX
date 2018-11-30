@@ -31,9 +31,14 @@ public class Arbiter {
         return searchForEmptySequence() || isDrawn();
     }
 
-    boolean isDrawn(){
-        if(setX.isEmpty() && setO.isEmpty()) return true;
-        else return false;
+    boolean isDrawn() {
+        return setX.isEmpty() && setO.isEmpty();
+    }
+
+    public Sign indicateWhoWon() {
+        if (isDrawn()) return null;
+        else if (setX.stream().anyMatch(sequence -> sequence.getSequence().size() == 0)) return Sign.X;
+        else return Sign.O;
     }
 
     private boolean searchForEmptySequence() {

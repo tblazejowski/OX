@@ -4,6 +4,7 @@ import pl.falcor.ox.arbiter.Arbiter;
 import pl.falcor.ox.board.Board;
 import pl.falcor.ox.board.BoardDimension;
 import pl.falcor.ox.board.Field;
+import pl.falcor.ox.board.Sign;
 import pl.falcor.ox.io.ConsolePrinter;
 import pl.falcor.ox.io.ConsoleReader;
 import pl.falcor.ox.settings.Settings;
@@ -40,9 +41,22 @@ public class Match {
             Field chosenField = new Field(requestMove());
             matchBoard.addSign(chosenField, settings.getPlayers()[turn % 2].getSign());
             isWon = arbiter.isWinningSign(chosenField, settings.getPlayers()[turn % 2].getSign());
+            printTurnInfo();
             consolePrinter.println(matchBoard.toString());
             turn++;
         }
+        printWinnerInfo();
+    }
+
+    private void printWinnerInfo() {
+        Sign winningSign = arbiter.indicateWhoWon();
+        if (winningSign != null) consolePrinter.println(arbiter.indicateWhoWon().toString());
+        else consolePrinter.println(messages.getString("draw"));
+    }
+
+    private void printTurnInfo(){
+        consolePrinter.println(messages.getString("turn") + " "
+                + (turn + 1));
     }
 
     private int requestMove() {

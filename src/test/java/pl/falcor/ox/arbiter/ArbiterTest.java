@@ -140,8 +140,8 @@ public class ArbiterTest {
         if (field.getPosition() < 25)
             Assert.assertFalse(arbiters[4].isWinningSign(field, sign) || arbiters[4].isDrawn());
         else {
-            Assert.assertFalse(arbiters[4].isWinningSign(field, sign));
-            Assert.assertTrue(arbiters[4].isDrawn());
+            Assert.assertTrue(arbiters[4].isWinningSign(field, sign));
+            Assert.assertNull(arbiters[4].indicateWhoWon());
         }
     }
 
