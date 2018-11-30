@@ -137,10 +137,11 @@ public class ArbiterTest {
 
         boards[4].addSign(field, sign);
 
-        if (field.getPosition() < 25) Assert.assertEquals(arbiters[4].isWinningSign(field, sign) || arbiters[4].isDrawn(field,sign), false);
+        if (field.getPosition() < 25)
+            Assert.assertFalse(arbiters[4].isWinningSign(field, sign) || arbiters[4].isDrawn(field, sign));
         else {
-            Assert.assertEquals(arbiters[4].isWinningSign(field, sign), false);
-            Assert.assertEquals(arbiters[4].isDrawn(field, sign), true);
+            Assert.assertFalse(arbiters[4].isWinningSign(field, sign));
+            Assert.assertTrue(arbiters[4].isDrawn(field, sign));
         }
     }
 
@@ -180,7 +181,7 @@ public class ArbiterTest {
 
         boards[5].addSign(field, sign);
 
-        if (field.getPosition() == 25) Assert.assertEquals(arbiters[5].isWinningSign(field, sign), true);
-        else Assert.assertEquals(arbiters[5].isWinningSign(field, sign), false);
+        if (field.getPosition() == 25) Assert.assertTrue(arbiters[5].isWinningSign(field, sign));
+        else Assert.assertFalse(arbiters[5].isWinningSign(field, sign));
     }
 }
