@@ -8,6 +8,7 @@ public class Game {
     private static final int NUMBER_OF_MATCHES = 3;
     private Settings settings;
     private SettingsReader settingsReader;
+    private Player[] players;
 
     public Settings getSettings() {
         return settings;
@@ -22,5 +23,6 @@ public class Game {
     void initializeGame() {
         settingsReader = new SettingsReader();
         settings = settingsReader.requestSettings();
+        players = settings.getPlayers();
     }
 }

@@ -50,11 +50,19 @@ public class Match {
 
     private void printWinnerInfo() {
         Sign winningSign = arbiter.indicateWhoWon();
-        if (winningSign != null) consolePrinter.println(arbiter.indicateWhoWon().toString());
+        if (winningSign != null) consolePrinter.println(getWinnerName(winningSign) + " " + messages.getString("win"));
         else consolePrinter.println(messages.getString("draw"));
     }
 
-    private void printTurnInfo(){
+    private String getWinnerName(Sign sign) {
+        String winnerName = "";
+        for (Player player : settings.getPlayers()) {
+            if (player.getSign().equals(sign)) winnerName = player.getName();
+        }
+        return winnerName;
+    }
+
+    private void printTurnInfo() {
         consolePrinter.println(messages.getString("turn") + " "
                 + (turn + 1));
     }
