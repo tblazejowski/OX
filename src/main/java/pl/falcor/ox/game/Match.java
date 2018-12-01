@@ -20,15 +20,17 @@ public class Match {
     private ResourceBundle messages;
     private Board matchBoard;
     private Arbiter arbiter;
+    private int matchNumberInRow;
     private int turn = 0;
 
-    public Match(SettingsReader settingsReader, Settings settings) {
+    public Match(SettingsReader settingsReader, Settings settings, int matchNumberInRow) {
         this.settings = settings;
         this.consolePrinter = settingsReader.getConsolePrinter();
         this.consoleReader = settingsReader.getConsoleReader();
         this.messages = settingsReader.getMessages();
         this.matchBoard = new Board(new BoardDimension(settings.getBoardDimension().getDimension()));
         this.arbiter = new Arbiter(matchBoard);
+        this.matchNumberInRow = matchNumberInRow;
     }
 
     public Sign playMatch() {
@@ -65,7 +67,8 @@ public class Match {
 
     private void printTurnInfo() {
         consolePrinter.println(messages.getString("turn") + " "
-                + (turn + 1) + "  ");
+                + (turn + 1) + "  "
+                + messages.getString("match") + " " + matchNumberInRow);
     }
 
     private int requestMove() {
