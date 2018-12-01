@@ -1,0 +1,80 @@
+#!/bin/bash
+
+LOG_FILE1=test_3_3.log
+LOG_FILE2=test_5_5.log
+#mvn clean install
+touch $LOG_FILE1
+touch $LOG_FILE2
+
+(echo 1
+echo John
+echo Sara
+echo 1
+echo 1
+echo 3
+echo 5
+echo 1
+echo 2
+echo 9
+echo 8
+echo 1
+echo 5
+echo 2
+echo 9
+echo 7
+echo 4
+echo 6
+echo 3
+echo 8
+echo 9
+echo 5
+echo 3
+echo 4
+echo 7
+echo 6) | java -jar target/OX-0.1.jar | tee ${LOG_FILE1}
+
+(echo 2 
+echo Staś
+echo Grażyna
+echo 2
+echo 2
+echo 5
+echo 7
+echo 8
+echo 1
+echo 24
+echo 13
+echo 21
+echo 19
+echo 22
+echo 25
+echo 7
+echo 13
+echo 8
+echo 9
+echo 25
+echo 1
+echo 11
+echo 22
+echo 5
+echo 6
+echo 18
+echo 16
+echo 2
+echo 21
+echo 20
+echo 10
+echo 12
+echo 4
+echo 3
+echo 19
+echo 14
+echo 13
+echo 2
+echo 17
+echo 1
+echo 21
+echo 3
+echo 9
+echo 4
+echo 5) | java -jar target/OX-0.1.jar | tee ${LOG_FILE2}
