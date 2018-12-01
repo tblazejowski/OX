@@ -14,9 +14,8 @@ public class GameTest {
 
         ByteArrayInputStream inputStream = new ByteArrayInputStream("2\nStaś\nGrażyna\n1\n2\n3\n".getBytes());
         System.setIn(inputStream);
-        Game game = new Game();
 
-        game.initializeGame();
+        Game game = new Game();
 
         assertEquals(game.getSettings().getGameLocale().getDisplayLanguage(), "polski");
         assertEquals(game.getSettings().getPlayers()[0].getName(), "Staś");

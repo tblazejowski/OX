@@ -31,7 +31,7 @@ public class Match {
         this.arbiter = new Arbiter(matchBoard);
     }
 
-    public void playMatch() {
+    public Sign playMatch() {
         boolean isWon = false;
         consolePrinter.println(settings.getPlayers()[0].getName() + " "
                 + messages.getString("kickoffMessage") + " "
@@ -45,13 +45,14 @@ public class Match {
             consolePrinter.println(matchBoard.toString());
             turn++;
         }
-        printWinnerInfo();
+        return printWinnerInfo();
     }
 
-    private void printWinnerInfo() {
+    private Sign printWinnerInfo() {
         Sign winningSign = arbiter.indicateWhoWon();
-        if (winningSign != null) consolePrinter.println(getWinnerName(winningSign) + " " + messages.getString("win"));
-        else consolePrinter.println(messages.getString("draw"));
+        if (winningSign != null) consolePrinter.print(getWinnerName(winningSign) + " " + messages.getString("win") + "  ");
+        else consolePrinter.print(messages.getString("draw") + "  ");
+        return winningSign;
     }
 
     private String getWinnerName(Sign sign) {
@@ -64,7 +65,7 @@ public class Match {
 
     private void printTurnInfo() {
         consolePrinter.println(messages.getString("turn") + " "
-                + (turn + 1));
+                + (turn + 1) + "  ");
     }
 
     private int requestMove() {
