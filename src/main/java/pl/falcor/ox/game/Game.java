@@ -47,7 +47,7 @@ public class Game implements Toogle {
     }
 
     private void printScore(int matchesToPlay) {
-        if (matchesToPlay == 1) {
+        if (matchesToPlay == NUMBER_OF_MATCHES) {
             printFinalWinnerInfo();
             settingsReader.getConsolePrinter().println(messages.getString("finalScore")
                     + " O: "

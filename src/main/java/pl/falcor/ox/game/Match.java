@@ -52,7 +52,8 @@ public class Match {
 
     private Sign printWinnerInfo() {
         Sign winningSign = arbiter.indicateWhoWon();
-        if (winningSign != null) consolePrinter.print(getWinnerName(winningSign) + " " + messages.getString("win") + "  ");
+        if (winningSign != null)
+            consolePrinter.print(getWinnerName(winningSign) + " " + messages.getString("win") + "  ");
         else consolePrinter.print(messages.getString("draw") + "  ");
         return winningSign;
     }
@@ -75,7 +76,10 @@ public class Match {
         consolePrinter.println(settings.getPlayers()[turn % 2].getName() + " " + messages.getString("getMove"));
         int providedNumber = consoleReader.readNumber();
         if (providedNumber > 0 && providedNumber <= Math.pow(matchBoard.getBoardDimension().getDimension(), 2)) {
-            return providedNumber;
+            if (matchBoard.getGameBoard().get(new Field(providedNumber)) != null)  {
+                consolePrinter.println(messages.getString("occupied"));
+                return requestMove();
+            } else return providedNumber;
         } else {
             consolePrinter.println(messages.getString("wrongField"));
             return requestMove();
