@@ -4,7 +4,7 @@
 Tic-tac-toe (also known as noughts and crosses) **console game for 2 players** developed in TDD.
 Game interface is bi-lingual: English and Polish. The whole game consist of 3 matches played in a row.
 
-#### How to run this project?
+#### Technical side of this project
 
 ##### Minimum requirements
 
@@ -24,7 +24,7 @@ Preliminary steps:
 Launch the game
 
 - Enter following command in terminal to run the application:
-`java -jar target/OX-2.0.jar`
+`java -jar target/OX-2.0-jar-with-dependencies.jar`
 
 Enjoy playing!
 
@@ -37,3 +37,7 @@ The outcome will be visible under respective files:
 
 - test_3_3.log
 - test_5_5.log
+
+##### Log file
+
+Each run creates a file OX.log that contains logs from a game.
