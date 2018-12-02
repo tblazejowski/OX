@@ -31,7 +31,7 @@ echo 5
 echo 3
 echo 4
 echo 7
-echo 6) | java -jar target/OX-0.1.jar | tee ${LOG_FILE1}
+echo 6) | java -jar target/OX-2.0.jar | tee ${LOG_FILE1}
 
 (echo 2 
 echo Staś
@@ -77,4 +77,4 @@ echo 21
 echo 3
 echo 9
 echo 4
-echo 5) | java -jar target/OX-0.1.jar | tee ${LOG_FILE2}
+echo 5) | java -jar target/OX-2.0.jar | tee ${LOG_FILE2}

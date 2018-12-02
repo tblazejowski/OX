@@ -20,4 +20,11 @@ public class BoardDimension {
     public int getDimension() {
         return dimension;
     }
+
+    @Override
+    public String toString() {
+        return "BoardDimension{" +
+                "dimension=" + dimension +
+                '}';
+    }
 }

@@ -3,6 +3,7 @@ package pl.falcor.ox.settings;
 import pl.falcor.ox.board.BoardDimension;
 import pl.falcor.ox.game.Player;
 
+import java.util.Arrays;
 import java.util.Locale;
 
 /**
@@ -59,5 +60,14 @@ public class Settings {
 
     public BoardDimension getBoardDimension() {
         return boardDimension;
+    }
+
+    @Override
+    public String toString() {
+        return "Settings{" +
+                "gameLocale=" + gameLocale +
+                ", players=" + Arrays.toString(players) +
+                ", boardDimension=" + boardDimension +
+                '}';
     }
 }

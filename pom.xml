@@ -29,6 +29,7 @@
         <version.plugin.maven.compiler>3.8.0</version.plugin.maven.compiler>
         <version.plugin.maven.resources>3.1.0</version.plugin.maven.resources>
         <version.dependency.testng>6.10</version.dependency.testng>
+        <version.dependency.log4j>2.11.1</version.dependency.log4j>
     </properties>
 
     <dependencies>
@@ -38,6 +39,16 @@
             <artifactId>testng</artifactId>
             <version>${version.dependency.testng}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${version.dependency.log4j}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${version.dependency.log4j}</version>
         </dependency>
     </dependencies>
 

@@ -7,6 +7,7 @@ import pl.falcor.ox.board.Field;
 import pl.falcor.ox.board.Sign;
 import pl.falcor.ox.io.ConsolePrinter;
 import pl.falcor.ox.io.ConsoleReader;
+import pl.falcor.ox.io.GameLogger;
 import pl.falcor.ox.settings.Settings;
 import pl.falcor.ox.settings.SettingsReader;
 
@@ -33,6 +34,7 @@ public class Match {
     private Arbiter arbiter;
     private int matchNumberInRow;
     private int turn = 0;
+    private GameLogger gameLogger = new GameLogger();
 
     /**
      * @param settingsReader transfers channel of communication with user
@@ -62,8 +64,10 @@ public class Match {
                 + "\n" + matchBoard.toString());
         while (!isWon) {
             Field chosenField = new Field(requestMove());
-            matchBoard.addSign(chosenField, settings.getPlayers()[turn % 2].getSign());
-            isWon = arbiter.isEndingMatchSign(chosenField, settings.getPlayers()[turn % 2].getSign());
+            Sign sign = settings.getPlayers()[turn % 2].getSign();
+            matchBoard.addSign(chosenField, sign);
+            gameLogger.log("Sign added to game board:" + chosenField + sign);
+            isWon = arbiter.isEndingMatchSign(chosenField, sign);
             printTurnInfo();
             consolePrinter.println(matchBoard.toString());
             turn++;

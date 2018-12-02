@@ -6,6 +6,7 @@ import pl.falcor.ox.board.Sign;
 import pl.falcor.ox.game.Toogle;
 import pl.falcor.ox.io.ConsolePrinter;
 import pl.falcor.ox.io.ConsoleReader;
+import pl.falcor.ox.io.GameLogger;
 
 import java.util.EnumSet;
 import java.util.Locale;
@@ -26,6 +27,7 @@ public class SettingsReader implements Toogle {
     private ResourceBundle messages;
     private final Scanner scanner;
     private Locale currentLocale = new Locale("en", "US");
+    private GameLogger gameLogger = new GameLogger();
 
     public ConsolePrinter getConsolePrinter() {
         return consolePrinter;
@@ -51,7 +53,9 @@ public class SettingsReader implements Toogle {
         Locale currentLocale = setLanguage();
         Player[] players = requestStartingSign(requestWhoStarts(setPlayerNames()));
         BoardDimension boardDimension = requestBoardDimension();
-        return new Settings(currentLocale, players, boardDimension);
+        Settings settings = new Settings(currentLocale, players, boardDimension);
+        gameLogger.log("Game settings created: " + settings.toString());
+        return settings;
     }
 
     public SettingsReader() {

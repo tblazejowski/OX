@@ -26,4 +26,12 @@ public class Player {
     public Sign getSign() {
         return sign;
     }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "name='" + name + '\'' +
+                ", sign=" + sign +
+                '}';
+    }
 }
