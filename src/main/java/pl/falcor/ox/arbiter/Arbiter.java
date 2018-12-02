@@ -7,27 +7,47 @@ import pl.falcor.ox.board.Sign;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * A {@code Arbiter} object represents arbiter
+ * whose role is decide if conditions ending match are met
+ * after sign is added to specific field.
+ *
+ * @author Tomasz Błażejowski
+ * @version 2.0, 30 Nov 2018
+ */
 public class Arbiter {
 
-    private Board gameBoard;
     private SequenceSet sequenceSet;
     private Set<Sequence> setX;
     private Set<Sequence> setO;
 
+    /**
+     * @param gameBoard
+     *
+     * constructor with one parameter creates object of type {@code Arbiter}
+     * binding it with object of type {@code Board} on which game takes place
+     */
     public Arbiter(Board gameBoard) {
-        this.gameBoard = gameBoard;
         this.sequenceSet = new SequenceSet(gameBoard);
         sequenceSet.generateSequenceSet();
         this.setX = new HashSet<>();
         this.setO = new HashSet<>();
     }
 
+    /**
+     * Checks if sign put on specific field finishes the game
+     * both when one wins the match or match is drawn
+     *
+     * @param field Field on which sign was put
+     * @param sign Sign that was put on this field
+     * @return true if sign put on this field finishes the game
+     */
     public boolean isEndingMatchSign(Field field, Sign sign) {
 
         assignFreeSequenceToSpecificSign(field, sign);
         cleanUsedSequencesFromFreePool(field, sign);
         trashSequencesUsedByBothSignPools(field, sign);
-        removeUsedFieldFromPotentialSequence(field, sign);
+        removeUsedFieldFromPotentiallyWinningSequence(field, sign);
         return searchForEmptySequence() || isDrawn();
     }
 
@@ -35,6 +55,12 @@ public class Arbiter {
         return setX.isEmpty() && setO.isEmpty() && sequenceSet.getSequenceSet().isEmpty();
     }
 
+    /**
+     * Indicates which Sign won the match
+     *
+     * @return Sign that won the match or
+     * null if no winner and match was drawn
+     */
     public Sign indicateWhoWon() {
         if (isDrawn()) return null;
         else if (setX.stream().anyMatch(sequence -> sequence.getSequence().size() == 0)) return Sign.X;
@@ -45,7 +71,7 @@ public class Arbiter {
         return setX.stream().anyMatch(sequence -> sequence.getSequence().size() == 0) || setO.stream().anyMatch(sequence -> sequence.getSequence().size() == 0);
     }
 
-    private void removeUsedFieldFromPotentialSequence(Field field, Sign sign) {
+    private void removeUsedFieldFromPotentiallyWinningSequence(Field field, Sign sign) {
         if (sign.equals(Sign.X))
             setX.stream().filter(sequence -> sequence.getSequence().contains(field)).forEach(sequence -> sequence.getSequence().remove(field));
         else

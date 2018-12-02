@@ -7,20 +7,37 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.IntStream;
 
+
+/**
+ * A {@code SequenceSet} object represents sequence of fields {@code Field} in board {@code Board}
+ *
+ * @author Tomasz Błażejowski
+ * @version 1.0, 30 Nov 2018
+ */
 public class SequenceSet {
 
     private Set<Sequence> sequenceSet = new HashSet<>();
     private Board board;
 
-    public SequenceSet(Board board) {
+    /**
+     * constructor takes board {@code Board} as parameter to have
+     * basis for sequnces {@code Sequence} construction
+     *
+     * @param board
+     */
+    SequenceSet(Board board) {
         this.board = board;
     }
 
-    public Set<Sequence> getSequenceSet() {
+    Set<Sequence> getSequenceSet() {
         return sequenceSet;
     }
 
-    void generateSequenceSet(){
+    /**
+     * Generates all potentially winning field {@code Field} sequences
+     * for specific object ot type {@code Board}
+     */
+    void generateSequenceSet() {
         generateRowsSequenceSet();
         generateColumnsSequenceSet();
         generateMajorDiagonalSequenceSet();

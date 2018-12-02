@@ -12,6 +12,17 @@ import pl.falcor.ox.settings.SettingsReader;
 
 import java.util.ResourceBundle;
 
+/**
+ * A {@code Match} object represents a singular match for OX game
+ * Match has turns and info about its number in row for specific game {@code Game}
+ * Match has its own arbiter {@code Arbiter} and matchBoard on which is played {@code Board}
+ * Communication with user is handled by consoleReader {@code ConsoleReader} and
+ * consolePrinter {@code ConsolePrinter} via messages {@code ResourceBundle} specified in
+ * game settings {@code Settings}
+ *
+ * @author Tomasz Błażejowski
+ * @version 2.0, 30 Nov 2018
+ */
 public class Match {
 
     private Settings settings;
@@ -23,6 +34,11 @@ public class Match {
     private int matchNumberInRow;
     private int turn = 0;
 
+    /**
+     * @param settingsReader transfers channel of communication with user
+     * @param settings holds settings for specific match @see Settings
+     * @param matchNumberInRow indicates match number in row for specific game {@code Game}
+     */
     public Match(SettingsReader settingsReader, Settings settings, int matchNumberInRow) {
         this.settings = settings;
         this.consolePrinter = settingsReader.getConsolePrinter();
@@ -33,7 +49,12 @@ public class Match {
         this.matchNumberInRow = matchNumberInRow;
     }
 
-    public Sign playMatch() {
+    /**
+     * Plays singular match till finishing conditions are met.
+     *
+     * @return sign {@code Sign} that won the match.
+     */
+    Sign playMatch() {
         boolean isWon = false;
         consolePrinter.println(settings.getPlayers()[0].getName() + " "
                 + messages.getString("kickoffMessage") + " "

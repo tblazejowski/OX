@@ -1,17 +1,23 @@
 package pl.falcor.ox.game;
 
-public class Score {
+/**
+ * A {@code Score} object represents score for OX game
+ *
+ * @author Tomasz Błażejowski
+ * @version 2.0, 30 Nov 2018
+ */
+class Score {
 
     private int[] score;
 
-    public Score(int numberOfPlayers) {
+    Score(int numberOfPlayers) {
         this.score = new int[numberOfPlayers];
         for (int i = 0; i < score.length; i++) {
             score[i] = 0;
         }
     }
 
-    public int[] getScore() {
+    int[] getScore() {
         return score;
     }
 }

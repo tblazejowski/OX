@@ -12,6 +12,13 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
+/**
+ * A {@code SettingsReader} read settings from user input needed for OX game
+ *
+ *
+ * @author Tomasz Błażejowski
+ * @version 2.0, 30 Nov 2018
+ */
 public class SettingsReader implements Toogle {
 
     private ConsolePrinter consolePrinter;
@@ -32,6 +39,14 @@ public class SettingsReader implements Toogle {
         return messages;
     }
 
+    /**
+     * Calls all methods to get settings from user input needed to initialize a game
+     * First it sets game language
+     * Then it gets/sets players name and requests indication of starting player and sign from user accordingly
+     * After all it request to input board dimension
+     *
+     * @return specific game settings {@code Settings} chosen by user
+     */
     public Settings requestSettings(){
         Locale currentLocale = setLanguage();
         Player[] players = requestStartingSign(requestWhoStarts(setPlayerNames()));

@@ -3,11 +3,26 @@ package pl.falcor.ox.board;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * A {@code Board} object represents board used for OX game
+ * Board has fields {@code Fields} that are mapped as keys and
+ * indicate values - signs {@code Sign}.
+ * Board has also its dimension {@code BoardDimension}
+ *
+ * @author Tomasz Błażejowski
+ * @version 2.0, 30 Nov 2018
+ */
 public class Board {
 
     private Map<Field, Sign> gameBoard;
     private BoardDimension boardDimension;
 
+    /**
+     * constructor creates map where key is {@code Field} and values is {@code Sign}
+     * with fields number according to BoardDimension
+     *
+     * @param boardDimension BoardDimension indicates the size of board should have.
+     */
     public Board(BoardDimension boardDimension) {
         this.boardDimension = boardDimension;
         this.gameBoard = new HashMap<>();

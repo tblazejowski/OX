@@ -5,6 +5,12 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
+/**
+ * Class responsible for inout from console
+ *
+ * @author Tomasz Błażejowski
+ * @version 2.0, 30 Nov 2018
+ */
 public class ConsoleReader implements GameReader {
 
     private Scanner scanner;

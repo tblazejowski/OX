@@ -6,19 +6,25 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+/**
+ * A {@code Sequence} object represents sequence of Fields in Board
+ *
+ * @author Tomasz Błażejowski
+ * @version 1.0, 30 Nov 2018
+ */
 public class Sequence {
 
     private Set<Field> sequence;
 
-    public Sequence() {
+    Sequence() {
         this.sequence = new HashSet<>();
     }
 
-    public void addFieldToSequence(Field field) {
+    void addFieldToSequence(Field field) {
         sequence.add(field);
     }
 
-    public Set<Field> getSequence() {
+    Set<Field> getSequence() {
         return sequence;
     }
 

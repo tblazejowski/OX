@@ -1,20 +1,33 @@
 package pl.falcor.ox.game;
 
 import pl.falcor.ox.board.Sign;
+import pl.falcor.ox.io.GameLogger;
 import pl.falcor.ox.settings.Settings;
 import pl.falcor.ox.settings.SettingsReader;
 
 import java.util.ResourceBundle;
 
+/**
+ * A {@code Game} object represents a OX game
+ * Game consist of specified NUMBER_OF_MATCHES matches {@code Match}
+ * and has stipulated POINTS_FOR_WIN and POINTS_FOR_DRAW
+ * Game has its settings {@code Settings} and score {@code Score}
+ * It has also its bundle of messages to communicate with user {@code ResourceBundle}
+ * in chosen language
+ *
+ * @author Tomasz Błażejowski
+ * @version 2.0, 30 Nov 2018
+ */
 public class Game implements Toogle {
 
-    private ResourceBundle messages;
     private static final int NUMBER_OF_MATCHES = 3;
     private static final int POINTS_FOR_DRAW = 1;
     private static final int POINTS_FOR_WIN = 3;
+    private ResourceBundle messages;
     private Settings settings;
     private SettingsReader settingsReader;
     private Score score;
+    private GameLogger gameLogger = new GameLogger();
 
     public Game() {
         settingsReader = new SettingsReader();
@@ -23,12 +36,18 @@ public class Game implements Toogle {
         score = new Score(settings.getPlayers().length);
     }
 
-    public Settings getSettings() {
+    Settings getSettings() {
         return settings;
     }
 
+    /**
+     * Creates object of type {@code Match} and plays matches
+     * till NUMBER_OF_MATCHES constance
+     */
     public void start() {
         int matchNumberInRow = 1;
+        gameLogger.log("Game started: " + settings);
+
         while (matchNumberInRow <= NUMBER_OF_MATCHES) {
             Match match = new Match(settingsReader, settings, matchNumberInRow);
             setScore(match.playMatch());
