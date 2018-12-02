@@ -40,4 +40,4 @@ The outcome will be visible under respective files:
 
 ##### Log file
 
-Each run creates a file OX.log that contains logs from a game.
+Each run creates a file **OX.log** that contains logs from a game.
