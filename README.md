@@ -16,13 +16,14 @@ Game interface is bi-lingual: English and Polish. The whole game consist of 3 ma
 
 ##### How to run application?
 
-1. Preliminary steps:
+Preliminary steps:
 
-    - download repository content on your machine
-    - enter following command: `mvn clean install`
-2. Launch the game
+- download repository content on your machine
+- enter following command: `mvn clean install`
 
-    - Enter following command in terminal to run the application:
+Launch the game
+
+- Enter following command in terminal to run the application:
 `java -jar target/OX-2.0.jar`
 
-3. Enjoy playing!
+Enjoy playing!
