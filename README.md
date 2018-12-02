@@ -27,3 +27,13 @@ Launch the game
 `java -jar target/OX-2.0.jar`
 
 Enjoy playing!
+
+##### Automated testing
+
+You may emulate automated testing via bash script by running executable file **auto_testOX** with following command:
+`./auto_testOX`
+The script will simulate 2 games on different bord dimensions (3 and 5) in English and Polish accordingly.
+The outcome will be visible under respective files:
+
+- test_3_3.log
+- test_5_5.log
