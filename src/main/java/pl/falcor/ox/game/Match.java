@@ -42,7 +42,7 @@ public class Match {
         while (!isWon) {
             Field chosenField = new Field(requestMove());
             matchBoard.addSign(chosenField, settings.getPlayers()[turn % 2].getSign());
-            isWon = arbiter.isWinningSign(chosenField, settings.getPlayers()[turn % 2].getSign());
+            isWon = arbiter.isEndingMatchSign(chosenField, settings.getPlayers()[turn % 2].getSign());
             printTurnInfo();
             consolePrinter.println(matchBoard.toString());
             turn++;

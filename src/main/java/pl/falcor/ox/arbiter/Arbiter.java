@@ -22,7 +22,7 @@ public class Arbiter {
         this.setO = new HashSet<>();
     }
 
-    public boolean isWinningSign(Field field, Sign sign) {
+    public boolean isEndingMatchSign(Field field, Sign sign) {
 
         assignFreeSequenceToSpecificSign(field, sign);
         cleanUsedSequencesFromFreePool(field, sign);

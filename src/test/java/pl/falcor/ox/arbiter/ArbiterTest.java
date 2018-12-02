@@ -41,7 +41,7 @@ public class ArbiterTest {
 
         boards[0].addSign(field, Sign.X);
 
-        Assert.assertEquals(arbiters[0].isWinningSign(field, Sign.X), result);
+        Assert.assertEquals(arbiters[0].isEndingMatchSign(field, Sign.X), result);
     }
 
     @DataProvider(name = "testWinningSequenceOfXsInColumn")
@@ -60,7 +60,7 @@ public class ArbiterTest {
 
         boards[1].addSign(field, Sign.X);
 
-        Assert.assertEquals(arbiters[1].isWinningSign(field, Sign.X), result);
+        Assert.assertEquals(arbiters[1].isEndingMatchSign(field, Sign.X), result);
     }
 
     @DataProvider(name = "testWinningSequenceOfXsInMajorDiagonal")
@@ -79,7 +79,7 @@ public class ArbiterTest {
 
         boards[2].addSign(field, Sign.X);
 
-        Assert.assertEquals(arbiters[2].isWinningSign(field, Sign.X), result);
+        Assert.assertEquals(arbiters[2].isEndingMatchSign(field, Sign.X), result);
     }
 
     @DataProvider(name = "testWinningSequenceOfXsInMinorDiagonal")
@@ -98,7 +98,7 @@ public class ArbiterTest {
 
         boards[3].addSign(field, Sign.X);
 
-        Assert.assertEquals(arbiters[3].isWinningSign(field, Sign.X), result);
+        Assert.assertEquals(arbiters[3].isEndingMatchSign(field, Sign.X), result);
     }
 
     @DataProvider(name = "testBoardIsFulfilledAndNoWinningConditionIsMet")
@@ -138,9 +138,9 @@ public class ArbiterTest {
         boards[4].addSign(field, sign);
 
         if (field.getPosition() < 25)
-            Assert.assertFalse(arbiters[4].isWinningSign(field, sign) || arbiters[4].isDrawn());
+            Assert.assertFalse(arbiters[4].isEndingMatchSign(field, sign) || arbiters[4].isDrawn());
         else {
-            Assert.assertTrue(arbiters[4].isWinningSign(field, sign));
+            Assert.assertTrue(arbiters[4].isEndingMatchSign(field, sign));
             Assert.assertNull(arbiters[4].indicateWhoWon());
         }
     }
@@ -181,7 +181,7 @@ public class ArbiterTest {
 
         boards[5].addSign(field, sign);
 
-        if (field.getPosition() == 25) Assert.assertTrue(arbiters[5].isWinningSign(field, sign));
-        else Assert.assertFalse(arbiters[5].isWinningSign(field, sign));
+        if (field.getPosition() == 25) Assert.assertTrue(arbiters[5].isEndingMatchSign(field, sign));
+        else Assert.assertFalse(arbiters[5].isEndingMatchSign(field, sign));
     }
 }
