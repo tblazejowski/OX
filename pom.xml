@@ -6,7 +6,7 @@
 
     <groupId>pl.falcor</groupId>
     <artifactId>OX</artifactId>
-    <version>0.1</version>
+    <version>2.0</version>
     <name>project_ox</name>
     <description>noughts and crosses game in console</description>
     <url>falcor.pl</url>

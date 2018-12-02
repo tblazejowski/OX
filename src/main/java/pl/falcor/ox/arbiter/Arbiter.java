@@ -32,7 +32,7 @@ public class Arbiter {
     }
 
     boolean isDrawn() {
-        return setX.isEmpty() && setO.isEmpty();
+        return setX.isEmpty() && setO.isEmpty() && sequenceSet.getSequenceSet().isEmpty();
     }
 
     public Sign indicateWhoWon() {
