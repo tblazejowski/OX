@@ -23,8 +23,9 @@ Preliminary steps:
 
 Launch the game
 
-- Enter following command in terminal to run the application:
+- **Linux users:** Enter following command in terminal to run the application:
 `java -jar target/OX-2.0-jar-with-dependencies.jar`
+- **Windows users:** execute **run_Wind.bat** file
 
 Enjoy playing!
 
