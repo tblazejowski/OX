@@ -1,7 +1,7 @@
 package pl.falcor.ox.io;
 
 /**
- * Class responsible for outpu on console
+ * Responsible for output on console
  *
  * @author Tomasz Błażejowski
  * @version 2.0, 30 Nov 2018

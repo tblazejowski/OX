@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 import java.util.Scanner;
 
 /**
- * Class responsible for inout from console
+ * Responsible for reading input from console
  *
  * @author Tomasz Błażejowski
  * @version 2.0, 30 Nov 2018
