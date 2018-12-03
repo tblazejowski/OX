@@ -12,7 +12,7 @@ import java.util.Set;
  * @author Tomasz Błażejowski
  * @version 1.0, 30 Nov 2018
  */
-public class Sequence {
+class Sequence {
 
     private Set<Field> sequence;
 

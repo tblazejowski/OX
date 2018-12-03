@@ -14,7 +14,7 @@ import java.util.stream.IntStream;
  * @author Tomasz Błażejowski
  * @version 1.0, 30 Nov 2018
  */
-public class SequenceSet {
+class SequenceSet {
 
     private Set<Sequence> sequenceSet = new HashSet<>();
     private Board board;
