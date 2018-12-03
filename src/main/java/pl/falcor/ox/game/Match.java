@@ -37,8 +37,8 @@ public class Match {
     private GameLogger gameLogger = new GameLogger();
 
     /**
-     * @param settingsReader transfers channel of communication with user
-     * @param settings holds settings for specific match @see Settings
+     * @param settingsReader   transfers channel of communication with user
+     * @param settings         holds settings for specific match @see Settings
      * @param matchNumberInRow indicates match number in row for specific game {@code Game}
      */
     public Match(SettingsReader settingsReader, Settings settings, int matchNumberInRow) {
@@ -58,15 +58,17 @@ public class Match {
      */
     Sign playMatch() {
         boolean isWon = false;
-        consolePrinter.println(settings.getPlayers()[0].getName() + " "
+        gameLogger.log("Match " + matchNumberInRow + " started");
+        String kickOffMessage = settings.getPlayers()[0].getName() + " "
                 + messages.getString("kickoffMessage") + " "
-                + settings.getPlayers()[0].getSign() + "\n"
-                + "\n" + matchBoard.toString());
+                + settings.getPlayers()[0].getSign();
+        consolePrinter.println("\n" + kickOffMessage + "\n" + matchBoard.toString());
+        gameLogger.log(kickOffMessage);
         while (!isWon) {
             Field chosenField = new Field(requestMove());
             Sign sign = settings.getPlayers()[turn % 2].getSign();
             matchBoard.addSign(chosenField, sign);
-            gameLogger.log("Sign added to game board:" + chosenField + sign);
+            gameLogger.log("Turn:" + turn + ", sign added:" + chosenField + sign);
             isWon = arbiter.isEndingMatchSign(chosenField, sign);
             printTurnInfo();
             consolePrinter.println(matchBoard.toString());
@@ -77,9 +79,13 @@ public class Match {
 
     private Sign printWinnerInfo() {
         Sign winningSign = arbiter.indicateWhoWon();
-        if (winningSign != null)
+        if (winningSign != null) {
             consolePrinter.print(getWinnerName(winningSign) + " " + messages.getString("win") + "  ");
-        else consolePrinter.print(messages.getString("draw") + "  ");
+            gameLogger.log(getWinnerName(winningSign) + " " + messages.getString("win") + "  ");
+        } else {
+            consolePrinter.print(messages.getString("draw") + "  ");
+            gameLogger.log(messages.getString("draw") + "  ");
+        }
         return winningSign;
     }
 
@@ -101,7 +107,7 @@ public class Match {
         consolePrinter.println(settings.getPlayers()[turn % 2].getName() + " " + messages.getString("getMove"));
         int providedNumber = consoleReader.readNumber();
         if (providedNumber > 0 && providedNumber <= Math.pow(matchBoard.getBoardDimension().getDimension(), 2)) {
-            if (matchBoard.getGameBoard().get(new Field(providedNumber)) != null)  {
+            if (matchBoard.getGameBoard().get(new Field(providedNumber)) != null) {
                 consolePrinter.println(messages.getString("occupied"));
                 return requestMove();
             } else return providedNumber;

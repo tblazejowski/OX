@@ -5,7 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 public class GameLogger {
 
-    private static Logger logger = LogManager.getLogger(GameLogger.class);
+    private static Logger logger = LogManager.getLogger("");
 
     public void log(String msg) {
         logger.info(msg);

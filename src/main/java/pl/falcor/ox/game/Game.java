@@ -66,19 +66,25 @@ public class Game implements Toogle {
     }
 
     private void printScore(int matchesToPlay) {
+        StringBuilder scoreMessage = new StringBuilder();
         if (matchesToPlay == NUMBER_OF_MATCHES) {
             printFinalWinnerInfo();
-            settingsReader.getConsolePrinter().println(messages.getString("finalScore")
+            scoreMessage.append(messages.getString("finalScore")
                     + " O: "
                     + score.getScore()[0]
                     + "; X: "
                     + score.getScore()[1]);
-        } else
-            settingsReader.getConsolePrinter().println(messages.getString("score")
+            settingsReader.getConsolePrinter().println(scoreMessage.toString());
+            gameLogger.log(scoreMessage.toString());
+        } else {
+            scoreMessage.append(messages.getString("score")
                     + " O: "
                     + score.getScore()[0]
                     + "; X: "
                     + score.getScore()[1]);
+            settingsReader.getConsolePrinter().println(scoreMessage.toString());
+            gameLogger.log(scoreMessage.toString());
+        }
     }
 
     private void printFinalWinnerInfo() {

@@ -9,7 +9,6 @@ import java.util.Locale;
 /**
  * A {@code Settings} wraps all settings needed for OX game
  *
- *
  * @author Tomasz Błażejowski
  * @version 2.0, 30 Nov 2018
  */
