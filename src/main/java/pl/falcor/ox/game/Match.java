@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
  * @author Tomasz Błażejowski
  * @version 2.0, 30 Nov 2018
  */
-public class Match {
+class Match {
 
     private Settings settings;
     private ConsoleReader consoleReader;
@@ -41,7 +41,7 @@ public class Match {
      * @param settings         holds settings for specific match @see Settings
      * @param matchNumberInRow indicates match number in row for specific game {@code Game}
      */
-    public Match(SettingsReader settingsReader, Settings settings, int matchNumberInRow) {
+    Match(SettingsReader settingsReader, Settings settings, int matchNumberInRow) {
         this.settings = settings;
         this.consolePrinter = settingsReader.getConsolePrinter();
         this.consoleReader = settingsReader.getConsoleReader();

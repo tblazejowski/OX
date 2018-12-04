@@ -10,7 +10,7 @@ import static org.testng.Assert.assertEquals;
 @Test
 public class GameTest {
 
-    public void shouldInitializeGameWithChosenSettings(){
+    public void shouldInitializeGameWithChosenSettings() {
 
         ByteArrayInputStream inputStream = new ByteArrayInputStream("2\nStaś\nGrażyna\n1\n2\n3\n".getBytes());
         System.setIn(inputStream);
