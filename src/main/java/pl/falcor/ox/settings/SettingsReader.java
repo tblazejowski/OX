@@ -118,7 +118,7 @@ public class SettingsReader implements Toogle {
 
     BoardDimension requestBoardDimension() {
         consolePrinter.println(messages.getString("choseDimension"));
-        int providedDimension = validateDimnesionChosen(Settings.MAX_DIMENSION);
+        int providedDimension = validateDimensionChosen();
         return new BoardDimension(providedDimension);
 
     }
@@ -133,13 +133,13 @@ public class SettingsReader implements Toogle {
         }
     }
 
-    int validateDimnesionChosen(int maxDimension) {
+    int validateDimensionChosen() {
         int chosenDimension = consoleReader.readNumber();
-        if (chosenDimension > 2 && chosenDimension <= maxDimension)
+        if (chosenDimension > 2 && chosenDimension <= Settings.MAX_DIMENSION)
             return chosenDimension;
         else {
             consolePrinter.println(messages.getString("errDimension"));
-            return validateOptionChosen(maxDimension);
+            return validateOptionChosen(Settings.MAX_DIMENSION);
         }
     }
 }
