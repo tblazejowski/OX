@@ -16,8 +16,8 @@ import java.util.stream.IntStream;
  */
 class SequenceSet {
 
-    private Set<Sequence> sequenceSet = new HashSet<>();
-    private Board board;
+    private final Set<Sequence> sequenceSet = new HashSet<>();
+    private final Board board;
 
     /**
      * constructor takes board {@code Board} as parameter to have

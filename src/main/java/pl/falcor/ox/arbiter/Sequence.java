@@ -14,7 +14,7 @@ import java.util.Set;
  */
 class Sequence {
 
-    private Set<Field> sequence;
+    private final Set<Field> sequence;
 
     Sequence() {
         this.sequence = new HashSet<>();

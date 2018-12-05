@@ -23,10 +23,10 @@ public class Game implements Toogle {
     private static final int NUMBER_OF_MATCHES = 3;
     private static final int POINTS_FOR_DRAW = 1;
     private static final int POINTS_FOR_WIN = 3;
-    private ResourceBundle messages;
-    private Settings settings;
-    private SettingsReader settingsReader;
-    private Score score;
+    private final ResourceBundle messages;
+    private final Settings settings;
+    private final SettingsReader settingsReader;
+    private final Score score;
     private GameLogger gameLogger = new GameLogger();
 
     public Game() {

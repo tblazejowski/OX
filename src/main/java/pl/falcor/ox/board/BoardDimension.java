@@ -8,7 +8,7 @@ package pl.falcor.ox.board;
  */
 public class BoardDimension {
 
-    private int dimension;
+    private final int dimension;
 
     /**
      * @param boardDimension side length of board

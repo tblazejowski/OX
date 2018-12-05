@@ -14,8 +14,8 @@ import java.util.Map;
  */
 public class Board {
 
-    private Map<Field, Sign> gameBoard;
-    private BoardDimension boardDimension;
+    private final Map<Field, Sign> gameBoard;
+    private final BoardDimension boardDimension;
 
     /**
      * constructor creates map where key is {@code Field} and values is {@code Sign}

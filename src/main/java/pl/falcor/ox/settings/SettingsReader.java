@@ -22,7 +22,7 @@ import java.util.Scanner;
  */
 public class SettingsReader implements Toogle {
 
-    private ConsolePrinter consolePrinter;
+    private final ConsolePrinter consolePrinter;
     private ConsoleReader consoleReader;
     private ResourceBundle messages;
     private final Scanner scanner;

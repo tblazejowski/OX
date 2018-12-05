@@ -11,8 +11,8 @@ import pl.falcor.ox.board.Sign;
  */
 public class Player {
 
-    private String name;
-    private Sign sign;
+    private final String name;
+    private final Sign sign;
 
     public Player(String name, Sign sign) {
         this.name = name;

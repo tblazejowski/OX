@@ -26,13 +26,13 @@ import java.util.ResourceBundle;
  */
 class Match {
 
-    private Settings settings;
+    private final Settings settings;
     private ConsoleReader consoleReader;
     private ConsolePrinter consolePrinter;
-    private ResourceBundle messages;
-    private Board matchBoard;
-    private Arbiter arbiter;
-    private int matchNumberInRow;
+    private final ResourceBundle messages;
+    private final Board matchBoard;
+    private final Arbiter arbiter;
+    private final int matchNumberInRow;
     private int turn = 0;
     private GameLogger gameLogger = new GameLogger();
 

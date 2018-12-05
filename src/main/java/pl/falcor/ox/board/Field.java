@@ -14,7 +14,7 @@ import java.util.Objects;
  */
 public class Field {
 
-    private int position;
+    private final int position;
 
     /**
      * @param position is a specific number of a field in board @see Field

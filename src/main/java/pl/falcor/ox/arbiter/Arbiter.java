@@ -17,9 +17,9 @@ import java.util.Set;
  */
 public class Arbiter {
 
-    private SequenceSet sequenceSet;
-    private Set<Sequence> setX;
-    private Set<Sequence> setO;
+    private final SequenceSet sequenceSet;
+    private final Set<Sequence> setX;
+    private final Set<Sequence> setO;
 
     /**
      * @param gameBoard

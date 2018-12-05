@@ -8,7 +8,7 @@ package pl.falcor.ox.game;
  */
 class Score {
 
-    private int[] score;
+    private final int[] score;
 
     Score(int numberOfPlayers) {
         this.score = new int[numberOfPlayers];

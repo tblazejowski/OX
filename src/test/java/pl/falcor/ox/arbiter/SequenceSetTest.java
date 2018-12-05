@@ -6,6 +6,7 @@ import pl.falcor.ox.board.BoardDimension;
 import pl.falcor.ox.board.Field;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 @Test
 public class SequenceSetTest {
@@ -31,7 +32,7 @@ public class SequenceSetTest {
 
         sequenceSet.generateRowsSequenceSet();
 
-        assertEquals(sequenceSet.getSequenceSet().contains(sequence1), true);
+        assertTrue(sequenceSet.getSequenceSet().contains(sequence1));
     }
 
     public void ShouldReturnCorrectNumberOfColumnSequencesForSpecificBoard() {
@@ -55,7 +56,7 @@ public class SequenceSetTest {
 
         sequenceSet.generateColumnsSequenceSet();
 
-        assertEquals(sequenceSet.getSequenceSet().contains(sequence1), true);
+        assertTrue(sequenceSet.getSequenceSet().contains(sequence1));
     }
 
     public void ShouldConfirmMajorDiagonalSequencesSetForSpecificBoardContainsExpectedSequence() {
@@ -70,7 +71,7 @@ public class SequenceSetTest {
 
         sequenceSet.generateMajorDiagonalSequenceSet();
 
-        assertEquals(sequenceSet.getSequenceSet().contains(sequence1), true);
+        assertTrue(sequenceSet.getSequenceSet().contains(sequence1));
     }
 
     public void ShouldConfirmMinorDiagonalSequencesSetForSpecificBoardContainsExpectedSequence() {
@@ -85,7 +86,7 @@ public class SequenceSetTest {
 
         sequenceSet.generateMinorDiagonalSequenceSet();
 
-        assertEquals(sequenceSet.getSequenceSet().contains(sequence1), true);
+        assertTrue(sequenceSet.getSequenceSet().contains(sequence1));
     }
 
     public void ShouldConfirmSequencesSetForSpecificBoardContainsAllExpectedSequences() {
@@ -126,14 +127,14 @@ public class SequenceSetTest {
 
         sequenceSet.generateSequenceSet();
 
-        assertEquals(sequenceSet.getSequenceSet().contains(sequence1), true);
-        assertEquals(sequenceSet.getSequenceSet().contains(sequence2), true);
-        assertEquals(sequenceSet.getSequenceSet().contains(sequence3), true);
-        assertEquals(sequenceSet.getSequenceSet().contains(sequence4), true);
-        assertEquals(sequenceSet.getSequenceSet().contains(sequence5), true);
-        assertEquals(sequenceSet.getSequenceSet().contains(sequence6), true);
-        assertEquals(sequenceSet.getSequenceSet().contains(sequence7), true);
-        assertEquals(sequenceSet.getSequenceSet().contains(sequence8), true);
+        assertTrue(sequenceSet.getSequenceSet().contains(sequence1));
+        assertTrue(sequenceSet.getSequenceSet().contains(sequence2));
+        assertTrue(sequenceSet.getSequenceSet().contains(sequence3));
+        assertTrue(sequenceSet.getSequenceSet().contains(sequence4));
+        assertTrue(sequenceSet.getSequenceSet().contains(sequence5));
+        assertTrue(sequenceSet.getSequenceSet().contains(sequence6));
+        assertTrue(sequenceSet.getSequenceSet().contains(sequence7));
+        assertTrue(sequenceSet.getSequenceSet().contains(sequence8));
         assertEquals(sequenceSet.getSequenceSet().size(), 8);
     }
 }
